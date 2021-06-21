@@ -1,0 +1,10 @@
+# zshenv
+# ------
+#
+# Sets up global state. Sourced every time `zsh` is called.
+# Symlink `~/.zshenv` to this file.
+
+: ${XDG_CONFIG_HOME:=$HOME/.config}
+
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+

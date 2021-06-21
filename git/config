@@ -1,0 +1,10 @@
+[user]
+    name = Ethan Wu
+    email = ethanwu@cs.ucsb.edu
+[color]
+    ui = auto
+[core]
+    pager = less -FMRiX
+    editor = nvim
+    excludesfile = ~/.config/git/excludes
+
