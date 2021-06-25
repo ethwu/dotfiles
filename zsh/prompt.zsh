@@ -1,15 +1,19 @@
 # prompt.zsh
 # ----------
-#
-# Programmatically set up the prompt.
-#
-# Usage:
-#     source prompt.zsh [options]
-# Options:
-#     --user        Show the username in the prompt.
-#     --host        Show the hostname in the prompt.
-#     --elapsed     Show the time elapsed during commands.
-#     --vcs         Show VCS information when applicable.
+
+if ! [[ "$ZSH_EVAL_CONTEXT" =~ :file$ ]] ; then
+    echo 'prompt.zsh'
+    echo
+    echo 'Usage:'
+    echo '    source prompt.zsh [options]'
+    echo
+    echo 'Options:'
+    echo '    --user      Show the username in the prompt.'
+    echo '    --host      Show the hostname in the prompt.'
+    echo '    --elapsed   Show the time elapsed during commands.'
+    echo '    --vcs       Show VCS information when applicable.'
+    exit 1
+fi
 
 zparseopts -D -E -F \
     -user=show_user \
@@ -40,7 +44,7 @@ if [[ "$show_user" ]] || [[ "$show_host" ]] ; then
     PROMPT+="%F{yellow}:"
 fi
 
-PROMPT+="%F{green}%(4~|%-1~/...%2~|%~)%F{default}] "
+PROMPT+="%F{green}%-2>…>%(4~|%-1~/…%2~|%~)%>>%F{default}] "
 
 if [[ "$show_vcs" ]] ; then
     autoload -Uz vcs_info
