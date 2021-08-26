@@ -1,5 +1,8 @@
 local plugins="$XDG_DATA_HOME/zsh/"
 
+# zsh-completions
+fpath=("$plugins/zsh-completions/src" $fpath)
+
 # zsh-autosuggestions
 source "/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 

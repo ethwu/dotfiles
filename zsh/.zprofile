@@ -34,5 +34,5 @@ export RUSTUP_HOME="$XDG_DATA_HOME/cargo"
 # . "$CARGO_HOME/env"
 
 # Local binaries.
-export PATH="$HOME/.local/pkg:$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/pkg:$HOME/.local/bin:$PATH"
 

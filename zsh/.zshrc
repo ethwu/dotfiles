@@ -26,6 +26,8 @@ setopt inc_append_history
 setopt hist_reduce_blanks
 # ignore adjacent duplicates when searching
 setopt hist_find_no_dups
+# confirm bang history
+setopt hist_verify
 HISTSIZE=1200
 SAVEHIST=1100
 

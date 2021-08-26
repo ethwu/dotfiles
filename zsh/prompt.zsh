@@ -132,3 +132,8 @@ if [[ "$show_vcs" ]] ; then
     fi
 }
 
+# Continuation Prompt
+export PROMPT2="%F{red}%h %F{blue}> %F{default}"
+export PROMPT3="%F{blue}?# %F{default}"
+export PROMPT4="%F{blue}+%N:%i> %F{default}"
+
