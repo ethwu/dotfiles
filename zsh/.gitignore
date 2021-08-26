@@ -1,6 +1,9 @@
 .zcompdump
 .zsh_sessions
 
+# local config
+local/
+
 # allow hard-linking
 zshrc
 zprofile

@@ -48,6 +48,6 @@ setopt interactive_comments
 
 # aliases
 source "$ZDOTDIR/aliases.zsh"
-# plugins
-source "$ZDOTDIR/plugins.zsh"
+# local rc
+source "$ZDOTDIR/local/local.zsh"
 
