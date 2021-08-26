@@ -124,7 +124,7 @@ function precmd() {
 
 if [[ "$show_vcs" ]] ; then
     vcs_info
-        [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1] -Pr -- "$vcs_info_msg_0_"'
+        [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
     fi
 
     if [[ `print -P "$PROMPT" | wc -l` -gt 1 ]] ; then

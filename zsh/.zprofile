@@ -31,7 +31,7 @@ export SHELL_SESSION_FILE="$SHELL_SESSION_DIR/$TERM_SESSION_ID"
 # Cargo and Rustup
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/cargo"
-. "$CARGO_HOME/env"
+# . "$CARGO_HOME/env"
 
 # Local binaries.
 export PATH="$HOME/.local/pkg:$HOME/.local/bin:$PATH"

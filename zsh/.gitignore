@@ -1,3 +1,7 @@
 .zcompdump
 .zsh_sessions
 
+# allow hard-linking
+zshrc
+zprofile
+

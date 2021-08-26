@@ -18,13 +18,23 @@ setopt auto_pushd
 
 setopt extended_history
 setopt hist_expire_dups_first
+# append instead of overwrite history file
+setopt append_history
+# save history after every command
 setopt inc_append_history
+# no blanks in history
+setopt hist_reduce_blanks
+# ignore adjacent duplicates when searching
+setopt hist_find_no_dups
 HISTSIZE=1200
 SAVEHIST=1100
 
 # arrow keys to search history with prefix
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 setopt auto_menu
 setopt auto_list
@@ -36,4 +46,6 @@ setopt interactive_comments
 
 # aliases
 source "$ZDOTDIR/aliases.zsh"
+# plugins
+source "$ZDOTDIR/plugins.zsh"
 
