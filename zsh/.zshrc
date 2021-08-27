@@ -4,12 +4,28 @@
 # Configuration for interactive shells. Sourced every time an interactive shell
 # is opened.
 
+local p10k_available=
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    p10k_available=yes
+fi
+
+
 # term colors
 export CLICOLOR=1
 autoload -U colors && colors
 
 # prompt
-source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs
+if [[ ! "$p10k_available" ]] ; then
+    source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs
+fi
+
+# change partial line output marker
+export PROMPT_EOL_MARK="%F{white}%B%S◊%s%b%f"
 
 # zsh options
 setopt always_to_end
@@ -50,4 +66,11 @@ setopt interactive_comments
 source "$ZDOTDIR/aliases.zsh"
 # local rc
 source "$ZDOTDIR/local/local.zsh"
+
+if [[ "$p10k_available" ]] ; then
+    # To customize prompt, run `p10k configure` or edit $ZDOTDIR/.p10k.zsh.
+    [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
+fi
+
+unset p10k_available
 
