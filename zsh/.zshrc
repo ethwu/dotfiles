@@ -70,6 +70,12 @@ source "$ZDOTDIR/local/local.zsh"
 if [[ "$p10k_available" ]] ; then
     # To customize prompt, run `p10k configure` or edit $ZDOTDIR/.p10k.zsh.
     [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
+
+    local dollar="$POWERLEVEL9K_PROMPT_CHAR_OK_VIINS_CONTENT_EXPANSION"
+    export PROMPT2="%F{blue}┃ %F{red}%h %(?.%F{blue}.)$dollar %f"
+    export PROMPT3="%F[blue}┃ %(?.%F{blue}.%F{red})#? %f"
+    export PROMPT4="%F{blue}┃ %(?.%F{blue}.%F{red})+%N:%i$dollar %f"
+    unset dollar
 fi
 
 unset p10k_available

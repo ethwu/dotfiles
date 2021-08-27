@@ -60,7 +60,7 @@ if [[ "$show_vcs" ]] ; then
 fi
 
 PROMPT+="%-20(l::
-)%F{red}%h %F{blue}%# %F{default}"
+)%F{red}%h %(?.%F{blue}.%F{red})%# %F{default}"
 
 if [[ "$show_elapsed" ]] ; then
     function preexec() {
@@ -133,7 +133,7 @@ if [[ "$show_vcs" ]] ; then
 }
 
 # Continuation Prompt
-export PROMPT2="%F{red}%h %F{blue}> %F{default}"
-export PROMPT3="%F{blue}?# %F{default}"
-export PROMPT4="%F{blue}+%N:%i> %F{default}"
+export PROMPT2="%F{blue}┃ %F{red}%h %(?.%F{blue}.%F{red})> %f"
+export PROMPT3="%F{blue}┃ %(?.%F{blue}.%F{red})#? %f"
+export PROMPT4="%F{blue}┃ %(?.%F{blue}.%F{red})+%N:%i> %f"
 
