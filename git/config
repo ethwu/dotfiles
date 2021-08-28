@@ -7,4 +7,24 @@
     pager = less -FMRiX
     editor = nvim
     excludesfile = ~/.config/git/excludes
+    # do not honor executable bit changes
+    filemode = false
+[pull]
+    rebase = false
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    features = line-numbers
+    syntax-theme = base16
 

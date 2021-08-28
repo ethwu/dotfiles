@@ -1,3 +1,6 @@
 
 attic/
-
+# Windows thumbnails
+Thumbs.db
+# VS Files
+.vscode
