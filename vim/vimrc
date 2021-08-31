@@ -58,19 +58,24 @@ filetype plugin indent on
 set smartcase
 set ignorecase
 
+let mapleader="\<F6>"
+
 " tab to esc
 noremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 " shift-tab outputs tab in insert mode
-inoremap <S-Tab> <Tab>
+inoremap <Leader><Tab> <Tab>
 
 " ; to :
 map ; :
-" map :SW to sudo write
+" ampersand in normal mode for custom macros
+noremap & :A
+vnoremap & :A
+" map &sw to sudo write
 " https://stackoverflow.com/a/7078429
-command SW w !sudo tee > /dev/null %
+command Asw w !sudo tee > /dev/null %
 
 " show the statusline
 set laststatus=2
