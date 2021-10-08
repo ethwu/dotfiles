@@ -4,14 +4,15 @@
 # Configuration for interactive shells. Sourced every time an interactive shell
 # is opened.
 
+# whether p10k is available
 local p10k_available=
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
     p10k_available=yes
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 
@@ -20,12 +21,15 @@ export CLICOLOR=1
 autoload -U colors && colors
 
 # prompt
-if [[ ! "$p10k_available" ]] ; then
+if [[ ! "$p10k_available" ]] && [[ "$CATALINA_ENABLED" != 'false' ]] ; then
     source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs
 fi
 
 # change partial line output marker
 export PROMPT_EOL_MARK="%F{white}%B%S◊%s%b%f"
+
+# fix keybinds
+source "$ZDOTDIR/inputrc.zsh"
 
 # zsh options
 setopt always_to_end

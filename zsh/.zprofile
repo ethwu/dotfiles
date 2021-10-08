@@ -5,6 +5,7 @@
 # terminal window is opened, but not when `zsh` is invoked on the command line).
 
 # Set up the XDG Base Directories.
+export LOCAL_HOME="${LOCAL_HOME:=$HOME/.local}"
 export XDG_CONFIG_HOME
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:=$HOME/.cache}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:=$HOME/.local/share}"
@@ -33,6 +34,16 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/cargo"
 # . "$CARGO_HOME/env"
 
+# NPM
+export NPM_CONFIG_PREFIX="$LOCAL_HOME"
+
 # Local binaries.
-export PATH="$HOME/bin:$HOME/.local/pkg:$HOME/.local/bin:$PATH"
+export PATH="$LOCAL_HOME/bin:$PATH"
+for i in "$LOCAL_HOME/bin"/* ; do
+    if [[ -d "$i" ]] ; then
+        export PATH="$i:$PATH"
+    fi
+done
+
+source "$ZDOTDIR/local/profile.zsh"
 
