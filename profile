@@ -32,12 +32,10 @@ export PATH="$XDG_DATA_HOME/poetry/bin:$PATH"
 # Pylint
 export PYLINT_HOME="$XDG_CONFIG_HOME/pylint"
 
-# Racket
-export PLTUSERHOME="$XDG_DATA_HOME/racket"
-
 # Rust: Cargo and Rustup
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+# export PATH="$CARGO_HOME/bin:$PATH"
 # . "$CARGO_HOME/env"
 
 # wget
