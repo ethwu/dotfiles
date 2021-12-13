@@ -4,25 +4,28 @@
 # Configuration for interactive shells. Sourced every time an interactive shell
 # is opened.
 
-# whether p10k is available
-local p10k_available=
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
-    p10k_available=yes
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 # term colors
 export CLICOLOR=1
 autoload -U colors && colors
 
-# prompt
-if [[ ! "$p10k_available" ]] && [[ "$CATALINA_ENABLED" != 'false' ]] ; then
-    source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs
+if [[ -f "$ZDOTDIR/local/prompt.zsh" ]] ; then
+    source "$ZDOTDIR/local/prompt.zsh"
+else
+    # whether p10k is available
+    local p10k_available=
+
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block; everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
+        p10k_available=yes
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
+
+    # prompt
+    if [[ ! "$p10k_available" ]] && [[ "$CATALINA_ENABLED" != 'false' ]] ; then
+        source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs
+    fi
 fi
 
 # change partial line output marker
@@ -51,6 +54,15 @@ setopt hist_verify
 HISTSIZE=1200
 SAVEHIST=1100
 
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+mkdir -p "$XDG_CACHE_HOME/zsh"
+export SHELL_SESSION_DIR="$XDG_STATE_HOME/zsh/sessions"
+mkdir -p "$SHELL_SESSION_DIR"
+export SHELL_SESSION_FILE="$SHELL_SESSION_DIR/$TERM_SESSION_ID"
+
 # arrow keys to search history with prefix
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -68,8 +80,10 @@ setopt interactive_comments
 
 # aliases
 source "$ZDOTDIR/aliases.zsh"
-# local rc
-source "$ZDOTDIR/local/local.zsh"
+if [[ -f "$ZDOTDIR/local/local.zsh" ]] ; then
+    # local rc
+    source "$ZDOTDIR/local/local.zsh"
+fi
 
 if [[ "$p10k_available" ]] ; then
     # To customize prompt, run `p10k configure` or edit $ZDOTDIR/.p10k.zsh.

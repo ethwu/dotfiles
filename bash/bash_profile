@@ -1,0 +1,10 @@
+# .bash_profile
+# -------------
+# Symlink to ~/.bash_profile.
+# If this file is not found, bash will look for .bash_login and then
+# .profile, in that order.
+
+source "$HOME/.profile"
+
+add_local_bin_to_path
+
