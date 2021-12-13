@@ -54,6 +54,15 @@ setopt hist_verify
 HISTSIZE=1200
 SAVEHIST=1100
 
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+mkdir -p "$XDG_CACHE_HOME/zsh"
+export SHELL_SESSION_DIR="$XDG_STATE_HOME/zsh/sessions"
+mkdir -p "$SHELL_SESSION_DIR"
+export SHELL_SESSION_FILE="$SHELL_SESSION_DIR/$TERM_SESSION_ID"
+
 # arrow keys to search history with prefix
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
