@@ -81,11 +81,11 @@ command Asw w !sudo tee > /dev/null %
 set laststatus=2
 " completion menu
 set wildmenu
-" mouse compat
-set mouse=a
+" " mouse compat
+" set mouse=a
 
 " 16-color color scheme
-colorscheme dim
+colorscheme catalina
 
 source $XDG_CONFIG_HOME/vim/plugins.vim
 
