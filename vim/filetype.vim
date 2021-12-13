@@ -3,8 +3,6 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-    au BufNewFile,BufRead justfile setf make | set expandtab
+    au BufNewFile,BufRead justfile set filetype=just | packadd just-vim
 augroup END
-
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc | setlocal shiftwidth=2 softtabstop=2 expandtab
 
