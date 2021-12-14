@@ -55,8 +55,6 @@ HISTSIZE=1200
 SAVEHIST=1100
 
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-autoload -Uz compinit
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 mkdir -p "$XDG_CACHE_HOME/zsh"
 export SHELL_SESSION_DIR="$XDG_STATE_HOME/zsh/sessions"
@@ -77,6 +75,14 @@ setopt auto_list
 setopt extended_glob
 
 setopt interactive_comments
+
+if [[ -f "$ZDOTDIR/local/plugins.zsh" ]] ; then
+    source "$ZDOTDIR/local/plugins.zsh"
+fi
+export FPATH="$ZDOTDIR/completions:$FPATH"
+
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 # aliases
 source "$ZDOTDIR/aliases.zsh"

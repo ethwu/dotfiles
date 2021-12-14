@@ -4,6 +4,8 @@
 
 # local config
 local/
+# zsh completion functions
+completions/
 
 # allow hard-linking
 zshrc
