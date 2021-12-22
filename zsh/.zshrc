@@ -73,6 +73,8 @@ setopt auto_list
 
 # setopt auto_cd
 setopt extended_glob
+# allow ** to be equal to **/* and *** to be equal to ***/*
+setopt glob_star_short
 
 setopt interactive_comments
 

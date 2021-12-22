@@ -2,5 +2,8 @@
 attic/
 # Windows thumbnails
 Thumbs.db
+# macOS Finder metadata
+.DS_Store
 # VS Files
 .vscode
+

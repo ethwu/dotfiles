@@ -11,5 +11,7 @@ augroup filetypedetect
     au BufNewFile,BufRead *.{pm,pp,ptree} set filetype=pollen | packadd vim-racket vim-pollen
     au BufNewFile,BufRead *.html.p set filetype=html
     au BufNewFile,BufRead *.{pdf,txt}.p set filetype=pollen | packadd vim-racket vim-pollen
+
+    au BufNewFile,BufRead *.{hb,hbs,hdbs,handlebars} set filetype=handlebars | packadd vim-mustache-handlebars
 augroup END
 
