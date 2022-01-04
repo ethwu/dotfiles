@@ -4,6 +4,8 @@ attic/
 Thumbs.db
 # macOS Finder metadata
 .DS_Store
+# macOS folder icons
+Icon
 # VS Files
 .vscode
 
