@@ -1,6 +1,6 @@
 " vimrc
 " -----
-"
+
 " VIM and NeoVim configuration.
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
@@ -83,6 +83,17 @@ set laststatus=2
 set wildmenu
 " " mouse compat
 " set mouse=a
+
+" https://github.com/JohnStarich/dotfiles/blob/8d15945ca764048a228b1df6e4038c574494e9f5/vim/vimrc#L77-L88
+if has('mac')
+    silent call system('detect-background')
+    if v:shell_error
+        " Terminal background color is light
+        set background=light
+    else
+        set background=dark
+    endif
+endif
 
 " 16-color color scheme
 colorscheme catalina
