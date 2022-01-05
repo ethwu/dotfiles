@@ -84,14 +84,12 @@ set wildmenu
 " " mouse compat
 " set mouse=a
 
-" https://github.com/JohnStarich/dotfiles/blob/8d15945ca764048a228b1df6e4038c574494e9f5/vim/vimrc#L77-L88
 if has('mac')
-    silent call system('detect-background')
-    if v:shell_error
-        " Terminal background color is light
-        set background=light
+    if $TERM_PROGRAM == 'Apple_Terminal'
+        " need to strip the final, empty byte
+        let &background = system('detect-terminal-background')[:-2]
     else
-        set background=dark
+        let &background = system('detect-system-appearance')[:-2]
     endif
 endif
 
