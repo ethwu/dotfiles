@@ -83,4 +83,5 @@ shopt -s globstar
 # aliases
 [[ -f "$XDG_CONFIG_HOME/bash/aliases.bash" ]] && . "$XDG_CONFIG_HOME/bash/aliases.bash"
 # local configs
-[[ -f "$XDG_CONFIG_HOME/bash/local.bash" ]] && . "$XDG_CONFIG_HOME/bash/local.bash"
+[[ -f "$XDG_CONFIG_HOME/bash/local/local.bash" ]] && . "$XDG_CONFIG_HOME/bash/local/local.bash"
+
