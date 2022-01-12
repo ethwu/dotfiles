@@ -6,6 +6,7 @@ alias ll='ls -al'
 
 # exa
 if command -v exa &> /dev/null ; then
+    export EXA_COLORS='justfile=33;01;04'
     alias exa='exa -F'
     alias ls='exa --group-directories-first'
     alias la='ls -a'
