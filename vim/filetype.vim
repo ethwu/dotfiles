@@ -8,9 +8,9 @@ augroup filetypedetect
     au BufNewFile,BufRead *.toml,Gopkg.lock,Cargo.lock,*/.cargo/config,*/.cargo/credentials,Pipfile set filetype=toml | packadd vim-toml
 
     au BufNewFile,BufRead *.rkt set filetype=racket | packadd vim-racket
-    au BufNewFile,BufRead *.{pm,pp,ptree} set filetype=pollen | packadd vim-racket vim-pollen
+    au BufNewFile,BufRead *.{pm,pp,ptree} set filetype=pollen | packadd vim-racket | packadd vim-pollen
     au BufNewFile,BufRead *.html.p set filetype=html
-    au BufNewFile,BufRead *.{pdf,txt}.p set filetype=pollen | packadd vim-racket vim-pollen
+    au BufNewFile,BufRead *.{pdf,txt}.p set filetype=pollen | packadd vim-racket | packadd vim-pollen
 
     au BufNewFile,BufRead *.{hb,hbs,hdbs,handlebars} set filetype=handlebars | packadd vim-mustache-handlebars
 augroup END

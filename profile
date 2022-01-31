@@ -14,10 +14,8 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:=$HOME/.local/state}"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS:=/usr/local/share:/usr/share}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=$HOME/.local/run/user/$UID}"
+export LOCAL="$HOME/.local"
 
-# VIM configuration.
-
-export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
 
 # Path extensions and config flags.
 
@@ -29,6 +27,12 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/nodejs/node_repl_history"
 # NPM
 export NPM_CONFIG_PREFIX="$HOME"/.local
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+# Perl
+export PERL5LIB="$LOCAL/lib/perl5"
+export PERL_LOCAL_LIB_ROOT="$LOCAL"
+export PERL_MB_OPT="--install_base \"$LOCAL\""
+export PERL_MM_OPT="INSTALL_BASE=\"$LOCAL\""
 
 # Python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
@@ -45,6 +49,11 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 # Racket
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
 
+# Ruby: RubyGems
+export GEM_HOME="$XDG_DATA_HOME/gem"
+export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+export PATH="$GEM_HOME/bin:$PATH"
+
 # Rust: Cargo and Rustup
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
@@ -54,9 +63,18 @@ export BSPM_CONFIG="$XDG_CONFIG_HOME/blindspot/bspm.yaml"
 export BSPM_BIN_DIR="$XDG_BIN_HOME"
 export BPSM_DATA_DIR="$XDG_DATA_HOME/blindspot"
 
+# SQLite
+export SQLITE_HISTORY="$XDG_DATA_OME/sqlite/history"
+
+# Vim
+export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
+
 # wget
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
+# Wine
+export WINEPREFIX="$XDG_DATA_HOME/wine"
 
 if [ -n "$BASH_VERSION" ] ; then
     [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

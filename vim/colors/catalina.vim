@@ -223,6 +223,8 @@ if s:t_Co >= 256
   hi CursorLineNr ctermfg=8 ctermbg=NONE cterm=NONE
   hi Operator ctermfg=8 ctermbg=NONE cterm=NONE
   hi Delimiter ctermfg=8 ctermbg=NONE cterm=NONE
+  hi Constant ctermfg=5 ctermbg=NONE cterm=NONE
+  hi Statement ctermfg=4 ctermbg=NONE cterm=bold
   unlet s:t_Co s:italics
   finish
 endif
@@ -331,6 +333,8 @@ if s:t_Co >= 16
   hi CursorLineNr ctermfg=DarkGrey ctermbg=White cterm=NONE
   hi Operator ctermfg=DarkGrey ctermbg=NONE cterm=NONE
   hi Delimiter ctermfg=DarkGrey ctermbg=NONE cterm=NONE
+  hi Constant ctermfg=DarkMagenta ctermbg=NONE cterm=NONE
+  hi Statement ctermfg=DarkBlue ctermbg=NONE cterm=bold
   unlet s:t_Co s:italics
   finish
 endif
@@ -439,6 +443,8 @@ if s:t_Co >= 8
   hi CursorLineNr ctermfg=DarkGrey ctermbg=White cterm=NONE
   hi Operator ctermfg=DarkGrey ctermbg=NONE cterm=NONE
   hi Delimiter ctermfg=DarkGrey ctermbg=NONE cterm=NONE
+  hi Constant ctermfg=DarkMagenta ctermbg=NONE cterm=NONE
+  hi Statement ctermfg=DarkBlue ctermbg=NONE cterm=bold
   unlet s:t_Co s:italics
   finish
 endif

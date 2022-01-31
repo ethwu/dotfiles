@@ -28,3 +28,5 @@
     features = line-numbers
     syntax-theme = ansi
 
+[init]
+	defaultBranch = main
