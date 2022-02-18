@@ -26,7 +26,23 @@
     diffFilter = delta --color-only --features=interactive
 [delta]
     features = line-numbers
+    # syntax-theme = base16-catalina
     syntax-theme = ansi
+    # emulate the catalina theme since current version of `delta` is
+    # incompatible with current version of `bat` theme caches
+    file-style = yellow bold
+    inline-hint-style = brightmagenta
+    hunk-header-decoration-style = brightmagenta box
+    hunk-header-line-number-style = brightmagenta italic
+    zero-style = syntax dim
+    plus-style = green
+    plus-non-emph-style = dim syntax
+    plus-emph-style = green
+    minus-style = red
+    minus-non-emph-style = dim syntax
+    minus-emph-style = red
+    line-numbers-plus-style = green
+    line-numbers-minus-style = red
 
 [init]
 	defaultBranch = main

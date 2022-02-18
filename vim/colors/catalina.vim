@@ -130,7 +130,7 @@ if s:t_Co >= 256
   hi CursorLine ctermfg=NONE ctermbg=8 cterm=NONE
   hi! link CursorColumn CursorLine
   hi Folded ctermfg=NONE ctermbg=8 cterm=NONE
-  hi ColorColumn ctermfg=NONE ctermbg=8 cterm=NONE
+  hi ColorColumn ctermfg=8 ctermbg=NONE cterm=reverse
   hi VertSplit ctermfg=7 ctermbg=8 cterm=NONE
   hi VertSplit ctermfg=7 ctermbg=8 cterm=NONE
   hi StatusLine ctermfg=NONE ctermbg=NONE cterm=reverse

@@ -1,4 +1,4 @@
---theme=base16
+--theme=base16-catalina
 --italic-text=always
 --style=changes,header,numbers,rule,snip
 --map-syntax html.p:HTML
