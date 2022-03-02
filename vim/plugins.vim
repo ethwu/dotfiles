@@ -56,7 +56,7 @@ let g:lightline.active.right =
             \   [ 'fileformat', 'fileencoding', 'filetype' ] ]
 let g:lightline.inactive = {}
 let g:lightline.inactive.left =
-            \ [ [ 'inactive', 'paste' ],
+            \ [ [ 'inactive' ],
             \   [ 'readonly' ],
             \   [ 'filename', 'modified' ] ]
 let g:lightline.inactive.right =
@@ -64,11 +64,17 @@ let g:lightline.inactive.right =
 let g:lightline.component = {}
 let g:lightline.component.inactive = 'inactive'
 let g:lightline.component.lineinfo = ' %3l:%-2v'
-let g:lightline.component_function = { 'readonly': 'PowerReadonly' }
+let g:lightline.component_function = { 
+            \ 'paste': 'LightlinePaste',
+            \ 'readonly': 'LightlineReadonly' }
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
 
-function! PowerReadonly()
+function! LightlinePaste()
+    return &paste ? 'paste' : ''
+endfunction
+
+function! LightlineReadonly()
     return &readonly ? '' : ''
 endfunction
 
