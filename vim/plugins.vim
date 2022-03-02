@@ -49,7 +49,7 @@ let g:lightline.active = {}
 let g:lightline.active.left =
             \ [ [ 'mode', 'paste' ],
             \   [ 'readonly' ],
-            \   [ 'filename', 'modified' ] ]
+            \   [ 'filename', 'modified', 'gitstatus' ] ]
 let g:lightline.active.right =
             \ [ [ 'lineinfo' ],
             \   [ 'percent' ],
@@ -64,9 +64,11 @@ let g:lightline.inactive.right =
 let g:lightline.component = {}
 let g:lightline.component.inactive = 'inactive'
 let g:lightline.component.lineinfo = ' %3l:%-2v'
-let g:lightline.component_function = { 
+let g:lightline.component.gitstatus = '%v'
+let g:lightline.component_function = {
             \ 'paste': 'LightlinePaste',
-            \ 'readonly': 'LightlineReadonly' }
+            \ 'readonly': 'LightlineReadonly',
+            \ 'gitstatus': 'LightlineGitStatus' }
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
 
@@ -76,6 +78,18 @@ endfunction
 
 function! LightlineReadonly()
     return &readonly ? '' : ''
+endfunction
+
+hi User1 ctermfg=red ctermbg=NONE
+
+function! LightlineGitStatus()
+    let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+    let [a, m, r] = GitGutterGetHunkSummary()
+    let out = (branch != '' ? printf(' %s', branch) : '') .
+                \ (a > 0 ? printf(' +%d', a) : '') .
+                \ (m > 0 ? printf(' ~%d', m) : '') .
+                \ (r > 0 ? printf(' -%d', r) : '')
+    return out != '' ? '' . out : ''
 endfunction
 
 " hide `-- INSERT --`

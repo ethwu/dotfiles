@@ -8,7 +8,7 @@ highlight clear
 let g:colors_name = 'catalina'
 
 let s:t_Co = exists('&t_Co') && !empty(&t_Co) && &t_Co > 1 ? &t_Co : 2
-let s:italics = (&t_ZH != '' && &t_ZH != '[7m') || has('gui_running') || 1
+let s:italics = (&t_ZH != '' && &t_ZH != '[7m') || has('gui_running') || has('nvim')
 
 if s:t_Co >= 16
   hi IncSearch ctermfg=6 ctermbg=NONE cterm=reverse
@@ -34,9 +34,9 @@ if s:t_Co >= 16
   hi ToolbarButton ctermfg=NONE ctermbg=NONE cterm=reverse
   hi ToolbarLine ctermfg=NONE ctermbg=8 cterm=NONE
   hi Pmenu ctermfg=15 ctermbg=8 cterm=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=0 cterm=NONE
-  hi PmenuThumb ctermfg=NONE ctermbg=7 cterm=NONE
-  hi PmenuSbar ctermfg=NONE ctermbg=0 cterm=NONE
+  hi PmenuSel ctermfg=15 ctermbg=0 cterm=NONE
+  hi PmenuThumb ctermfg=15 ctermbg=7 cterm=NONE
+  hi PmenuSbar ctermfg=15 ctermbg=0 cterm=NONE
   hi Comment ctermfg=8 ctermbg=NONE cterm=italic
   hi Constant ctermfg=4 ctermbg=NONE cterm=NONE
   hi! link String Constant
