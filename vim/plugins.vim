@@ -7,10 +7,16 @@ let g:rustfmt_autosave=1
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+  " set signcolumn=number
+  set signcolumn=yes
 else
   set signcolumn=yes
 endif
+
+" git gutter
+highlight GitGutterAdd ctermfg=2
+highlight GitGutterChange ctermfg=3
+highlight GitGutterDelete ctermfg=1
 
 " Use <c-space> to trigger completion.
 if has('nvim')
