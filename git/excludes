@@ -8,4 +8,6 @@ Thumbs.db
 Icon
 # VS Files
 .vscode
+# PNPM log
+.pnpm-debug.log
 

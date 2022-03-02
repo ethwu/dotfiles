@@ -30,19 +30,21 @@
     syntax-theme = ansi
     # emulate the catalina theme since current version of `delta` is
     # incompatible with current version of `bat` theme caches
+    tabs = 0
     file-style = yellow bold
-    inline-hint-style = brightmagenta
-    hunk-header-decoration-style = brightmagenta box
-    hunk-header-line-number-style = brightmagenta italic
+    inline-hint-style = brightmagenta blink
+    hunk-header-decoration-style = brightblue box
+    hunk-header-line-number-style = yellow
     zero-style = syntax dim
-    plus-style = green
-    plus-non-emph-style = dim syntax
-    plus-emph-style = green
-    minus-style = red
-    minus-non-emph-style = dim syntax
-    minus-emph-style = red
+    plus-style = green ul
+    plus-non-emph-style = syntax dim
+    plus-emph-style = green ul
+    minus-style = red ul
+    minus-non-emph-style = syntax dim
+    minus-emph-style = red ul
     line-numbers-plus-style = green
     line-numbers-minus-style = red
+    whitespace-error-style = ul
 
 [init]
 	defaultBranch = main

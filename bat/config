@@ -1,6 +1,6 @@
 --theme=base16-catalina
 --italic-text=always
---style=changes,header,numbers,rule,snip
+--style=changes,header-filename,header-filesize,numbers,rule,snip
 --map-syntax html.p:HTML
 --map-syntax poly.pm:Pollen
 
