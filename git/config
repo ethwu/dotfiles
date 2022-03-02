@@ -6,7 +6,6 @@
 [core]
     pager = less -FMRiX
     editor = nvim
-    excludesfile = ~/.config/git/excludes
     # do not honor executable bit changes
     filemode = false
 [pull]

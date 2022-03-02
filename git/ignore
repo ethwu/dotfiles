@@ -6,7 +6,7 @@ Thumbs.db
 .DS_Store
 # macOS folder icons
 Icon
-# VS Files
+# VS Code Files
 .vscode
 # PNPM log
 .pnpm-debug.log
