@@ -28,6 +28,12 @@ else
     fi
 fi
 
+# prompt continuation
+export PROMPT2="%(?.%F{blue}.%F{red})┆ %F{red}%! %F{yellow}%_%(?.%F{blue}.%F{red})%B>%b%f "
+# `select` prompt
+export PROMPT3="%F{blue}%B?)%b%f "
+# debug prompt
+export PROMPT4="%F{green}┆ %N%f:%F{yellow}%i%f "
 # change partial line output marker
 export PROMPT_EOL_MARK="%F{white}%B%S◊%s%b%f"
 

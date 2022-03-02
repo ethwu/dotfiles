@@ -31,20 +31,23 @@ if [ "$color_prompt" = yes ] ; then
     PS1+="[\[\e[32m\]\u\[\e[33m\]@" # user
     PS1+="\[\e[32m\]\h\[\e[33m\]:"  # host
     PS1+="\[\e[0m\]\w\[\e[0m\]] "   # working directory
-    PS1+="\[\e[91m\]\! "            # history number
-    PS1+="\[\e[34m\]\\$\[\e[0m\] "  # prompt char
+    PS1+="\[\e[31m\]\! "            # history number
+    PS1+="\[\e[1;34m\]\\$\[\e[0m\] "  # prompt char
+
+    # continuation prompt
+    PS2="\[\e[34m\]┆ \[\e[31m\]\! \[\e[1;34m\]>\[\e[0m\] "
+    # `select` prompt
+    PS3=$'\e[1;34m?)\e[m '
+    # debug prompt
+    PS4="\[\e[32m\]┆\[\e[0m\] "
 else
     PS1="${debian_chroot:+($debian_chroot)}\$? [\u@\h:\w] \! \\$ "
+    PS2="┆ \! > "
+    PS3="?) "
+    PS4="┆ "
 fi
 PROMPT_DIRTRIM=2
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
-esac
+
 # Update window size after each command and, if necessary, update the values of
 # LINES and COLUMNS.
 shopt -s checkwinsize
