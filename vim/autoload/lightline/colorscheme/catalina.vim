@@ -26,6 +26,7 @@ let s:middle    = [ 'fg', 'NONE', 'fg', 'NONE' ]
 let s:connector = [ 3, 'NONE', 3, 'NONE', 'reverse' ]
 let s:tabsel    = [ 3, 'NONE', 3, 'NONE', 'bold,reverse' ]
 let s:inactive  = [ 7, 13, 7, 13 ]
+let s:badge_inactive = [ 7, 13, 7, 13, 'italic' ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 let s:p.normal.left     = [ s:badge_normal, s:connector ]
@@ -46,9 +47,9 @@ let s:p.visual.left     = [ s:badge_visual, s:connector, s:middle ]
 let s:p.visual.middle   = [ s:middle ]
 let s:p.visual.right    = [ s:normal, s:connector, s:middle ]
 
-let s:p.inactive.left   = [ s:middle ]
+let s:p.inactive.left   = [ s:badge_inactive, s:connector ]
 let s:p.inactive.middle = [ s:middle ]
-let s:p.inactive.right  = [ s:inactive, s:middle ]
+let s:p.inactive.right  = [ s:inactive, s:connector, s:middle ]
 
 let s:p.tabline.left    = [ s:normal ]
 let s:p.tabline.middle  = [ s:normal ]
@@ -56,3 +57,4 @@ let s:p.tabline.right   = [ s:connector ]
 let s:p.tabline.tabsel  = [ s:tabsel ]
 
 let g:lightline#colorscheme#catalina#palette = lightline#colorscheme#fill(s:p)
+

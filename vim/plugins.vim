@@ -54,7 +54,15 @@ let g:lightline.active.right =
             \ [ [ 'lineinfo' ],
             \   [ 'percent' ],
             \   [ 'fileformat', 'fileencoding', 'filetype' ] ]
+let g:lightline.inactive = {}
+let g:lightline.inactive.left =
+            \ [ [ 'inactive', 'paste' ],
+            \   [ 'readonly' ],
+            \   [ 'filename', 'modified' ] ]
+let g:lightline.inactive.right =
+            \ [ [ 'lineinfo' ] ]
 let g:lightline.component = {}
+let g:lightline.component.inactive = 'inactive'
 let g:lightline.component.lineinfo = ' %3l:%-2v'
 let g:lightline.component_function = { 'readonly': 'PowerReadonly' }
 " let g:lightline.separator = { 'left': '', 'right': '' }
@@ -66,3 +74,4 @@ endfunction
 
 " hide `-- INSERT --`
 set noshowmode
+
