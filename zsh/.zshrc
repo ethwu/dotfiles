@@ -8,6 +8,9 @@
 export CLICOLOR=1
 autoload -U colors && colors
 
+# set default value of $ZDOTDIR
+ZDOTDIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+
 if [[ -f "$ZDOTDIR/local/prompt.zsh" ]] ; then
     source "$ZDOTDIR/local/prompt.zsh"
 else
@@ -38,7 +41,7 @@ export PROMPT4="%F{green}┆ %N%f:%F{yellow}%i%f "
 export PROMPT_EOL_MARK="%F{white}%B%S◊%s%b%f"
 
 # fix keybinds
-source "$ZDOTDIR/inputrc.zsh"
+[[ -f "$ZDOTDIR/inputrc.zsh" ]] && source "$ZDOTDIR/inputrc.zsh"
 
 # zsh options
 setopt always_to_end
@@ -60,11 +63,11 @@ setopt hist_verify
 HISTSIZE=1200
 SAVEHIST=1100
 
-export HISTFILE="$XDG_STATE_HOME/zsh/history"
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
-mkdir -p "$XDG_CACHE_HOME/zsh"
-export SHELL_SESSION_DIR="$XDG_STATE_HOME/zsh/sessions"
-mkdir -p "$SHELL_SESSION_DIR"
+export HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
+[[ "$EUID" -gt 0 ]] && mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+export SHELL_SESSION_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/sessions"
+[[ "$EUID" -gt 0 ]] && mkdir -p "$SHELL_SESSION_DIR"
 export SHELL_SESSION_FILE="$SHELL_SESSION_DIR/$TERM_SESSION_ID"
 
 # arrow keys to search history with prefix
@@ -84,31 +87,17 @@ setopt glob_star_short
 
 setopt interactive_comments
 
-if [[ -f "$ZDOTDIR/local/plugins.zsh" ]] ; then
-    source "$ZDOTDIR/local/plugins.zsh"
-fi
-export FPATH="$ZDOTDIR/completions:$FPATH"
+if [[ "$EUID" -gt 0 ]] ; then
+    [[ -f "$ZDOTDIR/local/plugins.zsh" ]] && source "$ZDOTDIR/local/plugins.zsh"
+    export FPATH="$ZDOTDIR/completions:$FPATH"
 
-autoload -Uz compinit
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+    autoload -Uz compinit
+    compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
 
-# aliases
-source "$ZDOTDIR/aliases.zsh"
-if [[ -f "$ZDOTDIR/local/local.zsh" ]] ; then
+    # aliases
+    [[ -f "$ZDOTDIR/aliases.zsh" ]] && source "$ZDOTDIR/aliases.zsh"
     # local rc
-    source "$ZDOTDIR/local/local.zsh"
-fi
-
-if [[ "$p10k_available" ]] ; then
-    # To customize prompt, run `p10k configure` or edit $ZDOTDIR/.p10k.zsh.
-    [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
-
-    # local dollar="$POWERLEVEL9K_PROMPT_CHAR_OK_VIINS_CONTENT_EXPANSION"
-    local dollar=">"
-    export PROMPT2="%F{blue}┃ %F{red}%h %(?.%F{blue}.)$dollar %f"
-    export PROMPT3="%F[blue}┃ %(?.%F{blue}.%F{red})#? %f"
-    export PROMPT4="%F{blue}┃ %(?.%F{blue}.%F{red})+%N:%i$dollar %f"
-    unset dollar
+    [[ -f "$ZDOTDIR/local/local.zsh" ]] && source "$ZDOTDIR/local/local.zsh"
 fi
 
 unset p10k_available

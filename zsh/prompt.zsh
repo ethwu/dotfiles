@@ -132,10 +132,5 @@ if [[ "$show_vcs" ]] ; then
     fi
 }
 
-# Continuation Prompt
-export PROMPT2="%F{blue}┃ %F{red}%h %(?.%F{blue}.%F{red})> %f"
-export PROMPT3="%F{blue}┃ %(?.%F{blue}.%F{red})#? %f"
-export PROMPT4="%F{blue}┃ %(?.%F{blue}.%F{red})+%N:%i> %f"
-
 unset endopts
 
