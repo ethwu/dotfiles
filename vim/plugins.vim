@@ -1,11 +1,8 @@
 
-" configure rust.vim
-let g:rustfmt_autosave=1
-
 " indent guides
 let g:indentguides_ignorelist = [ 'text', 'help' ]
 let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
+let g:indentguides_tabchar = '│'
 
 " configure coc.vim
 set signcolumn=yes
@@ -54,7 +51,9 @@ let g:lightline.active.left =
 let g:lightline.active.right =
             \ [ [ 'lineinfo' ],
             \   [ 'percent' ],
-            \   [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \   winwidth(0) >= 80 ?
+                \ [ 'fileformat', 'fileencoding', 'filetype' ] :
+                \ [] ]
 let g:lightline.inactive = {}
 let g:lightline.inactive.left =
             \ [ [ 'inactive' ],
@@ -63,15 +62,20 @@ let g:lightline.inactive.left =
 let g:lightline.inactive.right =
             \ [ [ 'lineinfo' ] ]
 let g:lightline.component = {}
-let g:lightline.component.inactive = 'inactive'
 let g:lightline.component.lineinfo = ' %3l:%-2v'
 let g:lightline.component_function = {
+            \ 'inactive': 'LightlineInactive',
             \ 'paste': 'LightlinePaste',
             \ 'readonly': 'LightlineReadonly',
             \ 'gitstatus': 'LightlineGitStatus',
             \ 'gitprojstatus': 'LightlineGitProjectStatus' }
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '│', 'right': '│' }
+
+function! LightlineInactive()
+    return winwidth(0) > 32 ? 'inactive' : ''
+endfunction
 
 function! LightlinePaste()
     return &paste ? 'paste' : ''
@@ -87,11 +91,11 @@ endfunction
 " endfunction
 
 function! LightlineGitStatus()
-    return trim(get(b:, 'coc_git_status', ''))
+    return winwidth(0) > 120 ? trim(get(b:, 'coc_git_status', '')) : ''
 endfunction
 
 function! LightlineGitProjectStatus()
-    return get(g:, 'coc_git_status', '')
+    return winwidth(0) > 120 ? get(g:, 'coc_git_status', '') : ''
 endfunction
 
 " hide `-- INSERT --`

@@ -44,6 +44,9 @@ set listchars=tab:→\ ,trail:·,nbsp:␣
 set colorcolumn=81,101
 " line numbers
 set number
+" highlight cursor line
+set cursorline
+set cursorlineopt=number
 
 " highlighting
 syntax enable

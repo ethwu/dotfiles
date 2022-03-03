@@ -1,265 +1,191 @@
 " Name:         Catalina
 " Author:       Ethan Wu <ethanwu@cs.ucsb.edu>
-" Maintainer:   Ethan Wu <ethanwu@cs.ucsb.edu>
-" License:      Vim License (see `:help license`)
-" Last Updated: Sat 04 Sep 2021 12:55:38 PM PDT
+" License:      MIT
+
 highlight clear
 
 let g:colors_name = 'catalina'
 
-let s:t_Co = exists('&t_Co') && !empty(&t_Co) && &t_Co > 1 ? &t_Co : 2
 let s:italics = (&t_ZH != '' && &t_ZH != '[7m') || has('gui_running') || has('nvim')
 
-if s:t_Co >= 16
-  hi IncSearch ctermfg=6 ctermbg=NONE cterm=reverse
-  hi Search ctermfg=3 ctermbg=NONE cterm=reverse
-  hi! link QuickFixLine Search
-  hi Visual ctermfg=NONE ctermbg=8 cterm=NONE
-  hi MatchParen ctermfg=11 ctermbg=8 cterm=bold
-  hi Cursor ctermfg=NONE ctermbg=NONE cterm=reverse
-  hi! link lCursor Cursor
-  hi CursorLine ctermfg=NONE ctermbg=8 cterm=NONE
-  hi! link CursorColumn CursorLine
-  hi Folded ctermfg=NONE ctermbg=8 cterm=NONE
-  hi ColorColumn ctermfg=8 ctermbg=NONE cterm=reverse
-  hi VertSplit ctermfg=7 ctermbg=8 cterm=NONE
-  hi VertSplit ctermfg=7 ctermbg=8 cterm=NONE
-  hi StatusLine ctermfg=NONE ctermbg=NONE cterm=reverse
-  hi StatusLineNC ctermfg=NONE ctermbg=8 cterm=NONE
-  hi! link StatusLineTerm StatusLine
-  hi! link StatusLineTermNC StatusLineNC
-  hi TabLineSel ctermfg=15 ctermbg=8 cterm=bold,reverse
-  hi TabLine ctermfg=8 ctermbg=NONE cterm=reverse
-  hi TabLineFill ctermfg=8 ctermbg=NONE cterm=reverse
-  hi ToolbarButton ctermfg=NONE ctermbg=NONE cterm=reverse
-  hi ToolbarLine ctermfg=NONE ctermbg=8 cterm=NONE
-  hi Pmenu ctermfg=15 ctermbg=8 cterm=NONE
-  hi PmenuSel ctermfg=15 ctermbg=0 cterm=NONE
-  hi PmenuThumb ctermfg=15 ctermbg=7 cterm=NONE
-  hi PmenuSbar ctermfg=15 ctermbg=0 cterm=NONE
-  hi Comment ctermfg=8 ctermbg=NONE cterm=italic
-  hi Constant ctermfg=4 ctermbg=NONE cterm=NONE
-  hi! link String Constant
-  hi! link Number Constant
-  hi Boolean ctermfg=4 ctermbg=NONE cterm=italic
-  hi! link Character Constant
-  hi! link Float Constant
-  hi Identifier ctermfg=2 ctermbg=NONE cterm=NONE
-  hi! link Function Identifier
-  hi Statement ctermfg=11 ctermbg=NONE cterm=bold
-  hi! link Conditional Statement
-  hi! link Repeat Statement
-  hi! link Keyword Statement
-  hi Label ctermfg=3 ctermbg=NONE cterm=NONE
-  hi! link Exception Statement
-  hi PreProc ctermfg=3 ctermbg=NONE cterm=NONE
-  hi! link Define PreProc
-  hi! link PreCondit PreProc
-  hi Include ctermfg=3 ctermbg=NONE cterm=bold
-  hi! link Macro Include
-  hi Type ctermfg=2 ctermbg=NONE cterm=NONE
-  hi! link Typedef Type
-  hi! link StorageClass Type
-  hi! link Structure Type
-  hi Special ctermfg=6 ctermbg=NONE cterm=NONE
-  hi! link SpecialChar Special
-  hi SpecialComment ctermfg=9 ctermbg=NONE cterm=italic
-  hi! link Debug Special
-  hi! link Tag Special
-  hi Error ctermfg=1 ctermbg=NONE cterm=bold
-  hi Todo ctermfg=5 ctermbg=NONE cterm=bold
-  hi Underlined ctermfg=13 ctermbg=NONE cterm=underline
-  hi Ignore ctermfg=8 ctermbg=NONE cterm=NONE
-  hi ModeMsg ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi MoreMsg ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi WarningMsg ctermfg=3 ctermbg=NONE cterm=italic
-  hi ErrorMsg ctermfg=9 ctermbg=NONE cterm=italic
-  hi VimCommand ctermfg=2 ctermbg=NONE cterm=NONE
-  hi RubyDefine ctermfg=7 ctermbg=NONE cterm=bold
-  hi Terminal ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi Conceal ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi Question ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi SignColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi SpellBad ctermfg=NONE ctermbg=NONE cterm=underline
-  hi SpellCap ctermfg=NONE ctermbg=NONE cterm=underline
-  hi SpellLocal ctermfg=NONE ctermbg=NONE cterm=underline
-  hi SpellRare ctermfg=NONE ctermbg=NONE cterm=underline
-  hi Title ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi VisualNOS ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi WildMenu ctermfg=NONE ctermbg=NONE cterm=NONE
-  if !s:italics
-    hi Comment cterm=NONE
-    hi Boolean cterm=NONE
-    hi SpecialComment cterm=NONE
-    hi WarningMsg cterm=NONE
-    hi ErrorMsg cterm=NONE
-  endif
-  if &background ==# 'dark'
-    hi Normal ctermfg=7 ctermbg=NONE cterm=NONE
-    hi LineNr ctermfg=8 ctermbg=NONE cterm=NONE
-    hi CursorLineNr ctermfg=8 ctermbg=NONE cterm=NONE
-    hi Operator ctermfg=7 ctermbg=NONE cterm=NONE
-    hi Delimiter ctermfg=7 ctermbg=NONE cterm=NONE
-    hi SpecialKey ctermfg=8 ctermbg=NONE cterm=NONE
-    hi NonText ctermfg=8 ctermbg=NONE cterm=NONE
-    unlet s:t_Co s:italics
-    finish
-  endif
-  " Light background
-  hi Normal ctermfg=0 ctermbg=NONE cterm=NONE
-  hi LineNr ctermfg=8 ctermbg=NONE cterm=NONE
-  hi CursorLineNr ctermfg=8 ctermbg=NONE cterm=NONE
-  hi Operator ctermfg=8 ctermbg=NONE cterm=NONE
-  hi Delimiter ctermfg=8 ctermbg=NONE cterm=NONE
-  hi Constant ctermfg=5 ctermbg=NONE cterm=NONE
-  hi Statement ctermfg=4 ctermbg=NONE cterm=bold
-  hi SpecialKey ctermfg=15 ctermbg=NONE cterm=NONE
-  hi NonText ctermfg=15 ctermbg=NONE cterm=NONE
-  unlet s:t_Co s:italics
-  finish
+if &background ==# 'dark'
+    hi Bright   ctermfg=15
+    hi Normal   ctermfg=7
+    hi Faint    ctermfg=8
+
+    " gutter
+    hi! link LineNr         Faint
+    hi! link LineNrAbove    LineNr
+    hi! link LineNrBelow    LineNr
+    hi! link CursorLineNr   Normal
+    hi ColorColumn          ctermfg=8       ctermbg=none       cterm=reverse
+
+    " syntax
+    hi Comment          ctermfg=8       cterm=italic
+    hi Identifier       ctermfg=2
+    hi Include          ctermfg=3
+    hi PreProc          ctermfg=8       cterm=italic
+    hi SpecialComment   ctermfg=5       cterm=italic
+    hi Statement        ctermfg=3       cterm=bold
+    hi! link String     Constant
+    hi Type             ctermfg=2
+
+    " cmdline
+    hi MoreMsg          ctermfg=8       cterm=bold
+else
+    hi Bright   ctermfg=0
+    hi Normal   ctermfg=8
+    hi Faint    ctermfg=8
+
+    " gutter
+    hi! link LineNr         Normal
+    hi! link CursorLineNr   Bright
+    hi ColorColumn          ctermfg=15      ctermbg=none    cterm=reverse
+
+    " syntax
+    hi Comment          ctermfg=2       cterm=italic
+    hi Identifier       ctermfg=5
+    hi Include          ctermfg=4
+    hi PreProc          ctermfg=4       cterm=italic
+    hi SpecialComment   ctermfg=13      cterm=italic
+    hi Statement        ctermfg=4       cterm=bold
+    hi String           ctermfg=1
+    hi Type             ctermfg=5
+
+    " cmdline
+    hi MoreMsg          ctermfg=4       cterm=bold
 endif
 
-if s:t_Co >= 8
-  hi IncSearch ctermfg=DarkCyan ctermbg=NONE cterm=reverse
-  hi Search ctermfg=DarkYellow ctermbg=NONE cterm=reverse
-  hi! link QuickFixLine Search
-  hi Visual ctermfg=NONE ctermbg=DarkGrey cterm=NONE
-  hi MatchParen ctermfg=LightYellow ctermbg=DarkGrey cterm=bold
-  hi Cursor ctermfg=NONE ctermbg=NONE cterm=reverse
-  hi! link lCursor Cursor
-  hi CursorLine ctermfg=NONE ctermbg=DarkGrey cterm=NONE
-  hi! link CursorColumn CursorLine
-  hi Folded ctermfg=NONE ctermbg=DarkGrey cterm=NONE
-  hi ColorColumn ctermfg=NONE ctermbg=DarkGrey cterm=NONE
-  hi VertSplit ctermfg=LightGrey ctermbg=DarkGrey cterm=NONE
-  hi VertSplit ctermfg=LightGrey ctermbg=DarkGrey cterm=NONE
-  hi StatusLine ctermfg=NONE ctermbg=NONE cterm=reverse
-  hi StatusLineNC ctermfg=NONE ctermbg=DarkGrey cterm=NONE
-  hi! link StatusLineTerm StatusLine
-  hi! link StatusLineTermNC StatusLineNC
-  hi TabLineSel ctermfg=White ctermbg=DarkGrey cterm=bold,reverse
-  hi TabLine ctermfg=DarkGrey ctermbg=NONE cterm=reverse
-  hi TabLineFill ctermfg=DarkGrey ctermbg=NONE cterm=reverse
-  hi ToolbarButton ctermfg=NONE ctermbg=NONE cterm=reverse
-  hi ToolbarLine ctermfg=NONE ctermbg=DarkGrey cterm=NONE
-  hi Pmenu ctermfg=White ctermbg=DarkGrey cterm=NONE
-  hi PmenuSel ctermfg=NONE ctermbg=Black cterm=NONE
-  hi PmenuThumb ctermfg=NONE ctermbg=LightGrey cterm=NONE
-  hi PmenuSbar ctermfg=NONE ctermbg=Black cterm=NONE
-  hi Comment ctermfg=DarkGrey ctermbg=NONE cterm=italic
-  hi Constant ctermfg=DarkBlue ctermbg=NONE cterm=NONE
-  hi! link String Constant
-  hi! link Number Constant
-  hi Boolean ctermfg=DarkBlue ctermbg=NONE cterm=italic
-  hi! link Character Constant
-  hi! link Float Constant
-  hi Identifier ctermfg=DarkGreen ctermbg=NONE cterm=NONE
-  hi! link Function Identifier
-  hi Statement ctermfg=LightYellow ctermbg=NONE cterm=bold
-  hi! link Conditional Statement
-  hi! link Repeat Statement
-  hi! link Keyword Statement
-  hi Label ctermfg=DarkYellow ctermbg=NONE cterm=NONE
-  hi! link Exception Statement
-  hi PreProc ctermfg=DarkYellow ctermbg=NONE cterm=NONE
-  hi! link Define PreProc
-  hi! link PreCondit PreProc
-  hi Include ctermfg=DarkYellow ctermbg=NONE cterm=bold
-  hi! link Macro Include
-  hi Type ctermfg=DarkGreen ctermbg=NONE cterm=NONE
-  hi! link Typedef Type
-  hi! link StorageClass Type
-  hi! link Structure Type
-  hi Special ctermfg=DarkCyan ctermbg=NONE cterm=NONE
-  hi! link SpecialChar Special
-  hi SpecialComment ctermfg=LightRed ctermbg=NONE cterm=italic
-  hi! link Debug Special
-  hi! link Tag Special
-  hi Error ctermfg=DarkRed ctermbg=NONE cterm=bold
-  hi Todo ctermfg=DarkMagenta ctermbg=NONE cterm=bold
-  hi Underlined ctermfg=LightMagenta ctermbg=NONE cterm=underline
-  hi Ignore ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-  hi ModeMsg ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi MoreMsg ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi WarningMsg ctermfg=DarkYellow ctermbg=NONE cterm=italic
-  hi ErrorMsg ctermfg=LightRed ctermbg=NONE cterm=italic
-  hi VimCommand ctermfg=DarkGreen ctermbg=NONE cterm=NONE
-  hi RubyDefine ctermfg=LightGrey ctermbg=NONE cterm=bold
-  hi Terminal ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi Conceal ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi Question ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi SignColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi SpecialKey ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi SpellBad ctermfg=NONE ctermbg=NONE cterm=underline
-  hi SpellCap ctermfg=NONE ctermbg=NONE cterm=underline
-  hi SpellLocal ctermfg=NONE ctermbg=NONE cterm=underline
-  hi SpellRare ctermfg=NONE ctermbg=NONE cterm=underline
-  hi Title ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi VisualNOS ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi WildMenu ctermfg=NONE ctermbg=NONE cterm=NONE
-  if !s:italics
-    hi Comment cterm=NONE
-    hi Boolean cterm=NONE
-    hi SpecialComment cterm=NONE
-    hi WarningMsg cterm=NONE
-    hi ErrorMsg cterm=NONE
-  endif
-  if &background ==# 'dark'
-    hi Normal ctermfg=LightGrey ctermbg=Black cterm=NONE
-    hi LineNr ctermfg=DarkGrey ctermbg=Black cterm=NONE
-    hi CursorLineNr ctermfg=DarkGrey ctermbg=Black cterm=NONE
-    hi Operator ctermfg=LightGrey ctermbg=NONE cterm=NONE
-    hi Delimiter ctermfg=LightGrey ctermbg=NONE cterm=NONE
-    unlet s:t_Co s:italics
+" gutter
+hi! link Conceal    Faint
+hi! link FoldColumn Faint
+hi! link SignColumn Faint
+
+" selections
+hi Cursor               ctermbg=6
+hi! link lCursor        Cursor
+hi! link CursorColumn   CursorLine
+hi MatchParen           ctermbg=6       cterm=bold
+" visual mode selection
+hi Visual               ctermbg=none    cterm=reverse
+" visual mode when vim does not own the selection
+hi VisualNOS            ctermbg=none    cterm=reverse
+
+" syntax
+hi! link Conditional    Statement
+hi Constant             ctermfg=12
+    hi Boolean          ctermfg=6       cterm=italic
+    hi Character        ctermfg=9
+    hi! link Float      Constant
+    hi! link Number     Constant
+" debugging statements
+hi! link Debug          Special
+hi! link Define         PreProc
+hi! link Delimiter      Faint
+hi! link Exception      Statement
+hi! link Function       Identifier
+hi! link Keyword        Statement
+hi Label                ctermfg=2
+hi! link Macro          Include
+hi! link Operator       Faint
+hi! link PreCondit      PreProc
+hi! link Repeat         Statement
+hi Special              ctermfg=6
+hi! link SpecialChar    Special
+hi! link StorageClass   Type
+hi! link Structure      Type
+hi! link Tag            Special
+hi! link Typedef        Type
+hi! link Whitespace     Faint
+
+" search
+hi Search       ctermfg=3       ctermbg=none    cterm=reverse
+hi IncSearch    ctermfg=11      ctermbg=none    cterm=reverse
+hi Substitute   ctermfg=6       ctermbg=none    cterm=reverse
+
+" diffs
+hi DiffAdd      ctermfg=2       ctermbg=none
+hi DiffChange   ctermfg=4       ctermbg=none
+hi DiffDelete   ctermfg=1       ctermbg=none
+hi DiffText     ctermfg=6       ctermbg=none
+
+" spelling
+hi SpellBad     ctermfg=1       ctermbg=none    cterm=underline
+hi SpellCap     ctermfg=5       ctermbg=none    cterm=underline
+hi SpellLocal   ctermfg=13      ctermbg=none    cterm=underline
+hi SpellRare    ctermfg=6       ctermbg=none    cterm=underline
+
+" warnings
+hi Error        ctermbg=1
+hi Todo         ctermfg=3       ctermbg=none    cterm=reverse
+
+" special
+hi! link        Ignore          Faint
+" characters that don't exist in the text
+hi! link        NonText         Faint
+" nonprintable characters
+hi! link        SpecialKey      Faint
+hi Underlined   ctermfg=13      cterm=underline
+" filler lines after end of buffer
+hi! link        EndOfBuffer     Faint
+
+" menus
+hi Menu                 ctermfg=4       ctermbg=none    cterm=reverse
+" line used for closed folds
+hi Folded               ctermfg=none    ctermbg=8
+" popup menu
+hi! link Pmenu          Menu
+" popup menu selection
+hi PmenuSel             ctermfg=12      ctermbg=none    cterm=reverse
+" popup menu scrollbar
+hi PmenuSbar            ctermbg=7
+" popup menu scrollbar thumb
+hi PmenuThumb           ctermbg=8
+hi! link QuickFixLine   Search
+hi! link Tooltip        Faint
+" column splitting vertically-split windows
+hi VertSplit            ctermfg=7       ctermbg=8
+" current match in wildmenu completion
+hi! link WildMenu       PmenuSel
+
+" statusline
+" statusline of current window
+hi StatusLine               ctermfg=4       ctermbg=none    cterm=reverse
+" statusline of non-current window
+hi StatusLineNC             ctermbg=4       ctermbg=none
+hi! link StatusLineTerm     StatusLine
+hi! link StatusLineTermNC   StatusLineNC
+" tabline
+" tab pages line, not active tab page label
+hi TabLine                  ctermfg=4       ctermbg=none    cterm=reverse
+" no labels
+hi TabLineFill              ctermbg=4
+" active tab page label
+hi TabLineSel               ctermfg=3       ctermbg=none    cterm=bold,reverse
+hi ToolbarLine              ctermbg=8
+hi ToolbarButon             cterm=reverse
+" cmdline
+hi! link MsgArea        Normal
+hi! link MsgSeparator   Faint
+hi ErrorMsg             ctermfg=1       ctermbg=none    cterm=italic
+hi ModeMsg              ctermfg=4       cterm=bold
+hi WarningMsg           ctermfg=6       ctermbg=none    cterm=italic
+" `Press ENTER to continue` and yes/no questions
+hi! link Question       Faint
+
+" listings
+hi Directory            ctermfg=4       cterm=bold
+" title in output of `:set all`, `:autocmd`, etc
+hi Title                ctermfg=4       cterm=bold
+
+if !s:italics
+    hi Boolean cterm=none
+    hi Comment cterm=none
+    hi ErrorMsg cterm=none
+    hi PreProc cterm=none
+    hi SpecialComment cterm=none
+    hi WarningMsg cterm=none
+    unlet s:italics
     finish
-  endif
-  " Light background
-  hi Normal ctermfg=Black ctermbg=White cterm=NONE
-  hi LineNr ctermfg=DarkGrey ctermbg=White cterm=NONE
-  hi CursorLineNr ctermfg=DarkGrey ctermbg=White cterm=NONE
-  hi Operator ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-  hi Delimiter ctermfg=DarkGrey ctermbg=NONE cterm=NONE
-  hi Constant ctermfg=DarkMagenta ctermbg=NONE cterm=NONE
-  hi Statement ctermfg=DarkBlue ctermbg=NONE cterm=bold
-  unlet s:t_Co s:italics
-  finish
 endif
 
-" Background: any
-" Color: black        #011517 0       Black
-" Color: red          #C43424 1       DarkRed
-" Color: green        #CFDD45 2       DarkGreen
-" Color: yellow       #FFB511 3       DarkYellow
-" Color: blue         #00B0DA 4       DarkBlue
-" Color: magenta      #E44C9A 5       DarkMagenta
-" Color: orange       #FF6E1B 6       DarkCyan
-" Color: white        #DCE1E5 7       LightGrey
-" Color: gray         #46535E 8       DarkGrey
-" Color: br_red       #EF5645 9       LightRed
-" Color: br_green     #F0FF6B 10      LightGreen
-" Color: br_yellow    #FFD200 11      LightYellow
-" Color: br_blue      #72CDF4 12      LightBlue
-" Color: purple       #716FB2 13      LightMagenta
-" Color: br_orange    #FF8F28 14      LightCyan
-" Color: br_white     #EEF0F2 15      White
-" Term colors: black red    green    yellow    blue    magenta orange    white
-" Term colors: gray  br_red br_green br_yellow br_blue purple  br_orange br_white
-" Background: dark
-" Background: light
-" Background: any
-" Background: dark
-" Background: light
-" Background: any
-" Background: dark
-" Background: light
-" Background: any
-" Background: dark
-" Background: light
-" Background: any
-" vim: et ts=2 sw=2
