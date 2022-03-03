@@ -53,6 +53,8 @@ set comments=sl:/*,mb:\ *,elx:\ */
 
 " detect filetype
 filetype plugin indent on
+" load file changes
+set autoread
 
 " mostly case-insensitive search
 set smartcase
@@ -86,6 +88,8 @@ set laststatus=2
 set wildmenu
 " " mouse compat
 " set mouse=a
+" always show at least one line above/below cursor
+set scrolloff=1
 
 " 16-color color scheme
 colorscheme catalina

@@ -8,6 +8,34 @@
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup": "GitGutterDelete"
+    "git.changeRemovedSign.hlGroup": "GitGutterDelete",
+
+    "languageserver": {
+        "latex": {
+            "command": "texlab",
+            "filetypes": [
+                "tex",
+                "bib",
+                "plaintex",
+                "context"
+            ]
+        },
+        "racket": {
+            "command": "racket",
+            "args": [
+                "--lib",
+                "racket-langserver"
+            ],
+            "filetypes": [
+                "scheme",
+                "racket"
+            ]
+        },
+        "sql": {
+            "command": "sql-language-server",
+            "args": [ "up", "--method", "stdio" ],
+            "filetypes": [ "sql", "mysql" ]
+        }
+    }
 }
 

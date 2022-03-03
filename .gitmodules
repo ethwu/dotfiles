@@ -16,6 +16,9 @@
 [submodule "vim/pack/plugins/opt/vim-mustache-handlebars"]
 	path = vim/pack/plugins/opt/vim-mustache-handlebars
 	url = git@github.com:mustache/vim-mustache-handlebars
-[submodule "vim/pack/plugins/start/vim-gitgutter"]
-	path = vim/pack/plugins/start/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/pack/plugins/start/vim-commentary"]
+	path = vim/pack/plugins/start/vim-commentary
+	url = git@github.com:tpope/vim-commentary
+[submodule "vim/pack/plugins/start/vim-indentguides"]
+	path = vim/pack/plugins/start/vim-indentguides
+	url = git@github.com:thaerkh/vim-indentguides.git

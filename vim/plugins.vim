@@ -2,22 +2,29 @@
 " configure rust.vim
 let g:rustfmt_autosave=1
 
+" indent guides
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
+
 " configure coc.vim
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  " set signcolumn=number
-  set signcolumn=yes
+    " Recently vim can merge signcolumn and number column into one
+    " set signcolumn=number
+    set signcolumn=yes
 else
-  set signcolumn=yes
+    set signcolumn=yes
 endif
 
 " git gutter
-highlight GitGutterAdd          ctermfg=2   cterm=reverse
-highlight GitGutterChange       ctermfg=3   cterm=reverse
-highlight GitGutterDelete       ctermfg=1   cterm=reverse
-highlight GitGutterChangeDelete ctermfg=6   cterm=reverse
+highlight GitGutterAdd          ctermfg=2   cterm=none
+highlight GitGutterChange       ctermfg=3   cterm=none
+highlight GitGutterDelete       ctermfg=1   cterm=none
+highlight GitGutterChangeDelete ctermfg=6   cterm=none
+
+" texlab language server
+let g:tex_flavor = 'latex'
 
 " Use <c-space> to trigger completion.
 if has('nvim')
