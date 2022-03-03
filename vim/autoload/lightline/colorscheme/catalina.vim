@@ -25,8 +25,8 @@ let s:error     = [ 1, 'NONE', 1, 'NONE', 'reverse' ]
 let s:middle    = [ 'fg', 'NONE', 'fg', 'NONE' ]
 let s:connector = [ 3, 'NONE', 3, 'NONE', 'reverse' ]
 let s:tabsel    = [ 3, 'NONE', 3, 'NONE', 'bold,reverse' ]
-let s:inactive  = [ 7, 13, 7, 13 ]
-let s:badge_inactive = [ 7, 13, 7, 13, 'italic' ]
+let s:inactive  = [ 13, 'NONE', 13, 'NONE', 'reverse' ]
+let s:badge_inactive = [ 13, 'NONE', 13, 'NONE', 'italic,reverse' ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 let s:p.normal.left     = [ s:badge_normal, s:connector ]

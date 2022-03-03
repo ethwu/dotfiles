@@ -10,9 +10,6 @@
 [submodule "vim/pack/plugins/opt/vim-racket"]
 	path = vim/pack/plugins/opt/vim-racket
 	url = git@github.com:wlangstroth/vim-racket.git
-[submodule "vim/pack/plugins/opt/vim-toml"]
-	path = vim/pack/plugins/opt/vim-toml
-	url = git@github.com:cespare/vim-toml.git
 [submodule "vim/pack/plugins/opt/vim-mustache-handlebars"]
 	path = vim/pack/plugins/opt/vim-mustache-handlebars
 	url = git@github.com:mustache/vim-mustache-handlebars

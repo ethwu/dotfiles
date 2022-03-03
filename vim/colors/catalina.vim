@@ -81,10 +81,8 @@ if s:t_Co >= 16
   hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE
   hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
   hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi NonText ctermfg=NONE ctermbg=NONE cterm=NONE
   hi Question ctermfg=NONE ctermbg=NONE cterm=NONE
   hi SignColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi SpecialKey ctermfg=NONE ctermbg=NONE cterm=NONE
   hi SpellBad ctermfg=NONE ctermbg=NONE cterm=underline
   hi SpellCap ctermfg=NONE ctermbg=NONE cterm=underline
   hi SpellLocal ctermfg=NONE ctermbg=NONE cterm=underline
@@ -105,6 +103,8 @@ if s:t_Co >= 16
     hi CursorLineNr ctermfg=8 ctermbg=NONE cterm=NONE
     hi Operator ctermfg=7 ctermbg=NONE cterm=NONE
     hi Delimiter ctermfg=7 ctermbg=NONE cterm=NONE
+    hi SpecialKey ctermfg=8 ctermbg=NONE cterm=NONE
+    hi NonText ctermfg=8 ctermbg=NONE cterm=NONE
     unlet s:t_Co s:italics
     finish
   endif
@@ -116,6 +116,8 @@ if s:t_Co >= 16
   hi Delimiter ctermfg=8 ctermbg=NONE cterm=NONE
   hi Constant ctermfg=5 ctermbg=NONE cterm=NONE
   hi Statement ctermfg=4 ctermbg=NONE cterm=bold
+  hi SpecialKey ctermfg=15 ctermbg=NONE cterm=NONE
+  hi NonText ctermfg=15 ctermbg=NONE cterm=NONE
   unlet s:t_Co s:italics
   finish
 endif
@@ -191,7 +193,6 @@ if s:t_Co >= 8
   hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE
   hi EndOfBuffer ctermfg=NONE ctermbg=NONE cterm=NONE
   hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE
-  hi NonText ctermfg=NONE ctermbg=NONE cterm=NONE
   hi Question ctermfg=NONE ctermbg=NONE cterm=NONE
   hi SignColumn ctermfg=NONE ctermbg=NONE cterm=NONE
   hi SpecialKey ctermfg=NONE ctermbg=NONE cterm=NONE
