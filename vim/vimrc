@@ -87,15 +87,6 @@ set wildmenu
 " " mouse compat
 " set mouse=a
 
-if has('mac')
-    if $TERM_PROGRAM == 'Apple_Terminal'
-        " need to strip the final, empty byte
-        let &background = system('detect-terminal-background')[:-2]
-    else
-        let &background = system('detect-system-appearance')[:-2]
-    endif
-endif
-
 " 16-color color scheme
 colorscheme catalina
 

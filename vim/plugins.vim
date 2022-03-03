@@ -49,8 +49,8 @@ let g:lightline.mode_map = {
 let g:lightline.active = {}
 let g:lightline.active.left =
             \ [ [ 'mode', 'paste' ],
-            \   [ 'readonly', 'filename', 'modified' ],
-            \   [ 'gitprojstatus', 'gitstatus' ] ]
+            \   [ 'readonly', 'modified' ],
+            \   [ 'filename', 'gitprojstatus', 'gitstatus' ] ]
 let g:lightline.active.right =
             \ [ [ 'lineinfo' ],
             \   [ 'percent' ],
@@ -58,8 +58,8 @@ let g:lightline.active.right =
 let g:lightline.inactive = {}
 let g:lightline.inactive.left =
             \ [ [ 'inactive' ],
-            \   [ 'readonly' ],
-            \   [ 'filename', 'modified' ] ]
+            \   [ 'readonly', 'modified' ],
+            \   [ 'filename' ] ]
 let g:lightline.inactive.right =
             \ [ [ 'lineinfo' ] ]
 let g:lightline.component = {}
