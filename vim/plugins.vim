@@ -14,9 +14,10 @@ else
 endif
 
 " git gutter
-highlight GitGutterAdd ctermfg=2
-highlight GitGutterChange ctermfg=3
-highlight GitGutterDelete ctermfg=1
+highlight GitGutterAdd          ctermfg=2   cterm=reverse
+highlight GitGutterChange       ctermfg=3   cterm=reverse
+highlight GitGutterDelete       ctermfg=1   cterm=reverse
+highlight GitGutterChangeDelete ctermfg=6   cterm=reverse
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -48,8 +49,8 @@ let g:lightline.mode_map = {
 let g:lightline.active = {}
 let g:lightline.active.left =
             \ [ [ 'mode', 'paste' ],
-            \   [ 'readonly' ],
-            \   [ 'filename', 'modified', 'gitstatus' ] ]
+            \   [ 'readonly', 'filename', 'modified' ],
+            \   [ 'gitprojstatus', 'gitstatus' ] ]
 let g:lightline.active.right =
             \ [ [ 'lineinfo' ],
             \   [ 'percent' ],
@@ -64,11 +65,11 @@ let g:lightline.inactive.right =
 let g:lightline.component = {}
 let g:lightline.component.inactive = 'inactive'
 let g:lightline.component.lineinfo = ' %3l:%-2v'
-let g:lightline.component.gitstatus = '%v'
 let g:lightline.component_function = {
             \ 'paste': 'LightlinePaste',
             \ 'readonly': 'LightlineReadonly',
-            \ 'gitstatus': 'LightlineGitStatus' }
+            \ 'gitstatus': 'LightlineGitStatus',
+            \ 'gitprojstatus': 'LightlineGitProjectStatus' }
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
 
@@ -80,16 +81,17 @@ function! LightlineReadonly()
     return &readonly ? '' : ''
 endfunction
 
-hi User1 ctermfg=red ctermbg=NONE
+" function! LightlineGitBlame()
+"     let blame = get(b:, 'coc_git_blame', '')
+"     return winwidth(0) > 120 && blame != '' ? blame : ''
+" endfunction
 
 function! LightlineGitStatus()
-    let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-    let [a, m, r] = GitGutterGetHunkSummary()
-    let out = (branch != '' ? printf(' %s', branch) : '') .
-                \ (a > 0 ? printf(' +%d', a) : '') .
-                \ (m > 0 ? printf(' ~%d', m) : '') .
-                \ (r > 0 ? printf(' -%d', r) : '')
-    return out != '' ? '' . out : ''
+    return trim(get(b:, 'coc_git_status', ''))
+endfunction
+
+function! LightlineGitProjectStatus()
+    return get(g:, 'coc_git_status', '')
 endfunction
 
 " hide `-- INSERT --`

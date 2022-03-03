@@ -1,0 +1,13 @@
+{
+    "git.branchCharacter": "",
+    "git.changedDecorator": "!",
+    "git.conflictedDecorator": "~",
+    "git.stagedDecorator": "+",
+    "git.untrackedDecorator": "?",
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterDelete"
+}
+
