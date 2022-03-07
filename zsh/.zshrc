@@ -9,7 +9,17 @@ export CLICOLOR=1
 autoload -U colors && colors
 
 # set default value of $ZDOTDIR
-ZDOTDIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
+if [[ -n "$ZDOTDIR" ]] ; then
+    config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+    if [[ -d "$config_dir" ]] ; then
+        ZDOTDIR="$config_dir"
+    else
+        ZDOTDIR="$HOME"
+    fi
+    unset config_dir
+fi
+
+[[ "$EUID" -gt 0 && -f "$ZDOTDIR/local/pre.zsh" ]] && source "$ZDOTDIR/local/pre.zsh"
 
 if [[ -f "$ZDOTDIR/local/prompt.zsh" ]] ; then
     source "$ZDOTDIR/local/prompt.zsh"

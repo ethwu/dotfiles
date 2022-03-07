@@ -9,15 +9,25 @@ set runtimepath+=$XDG_CONFIG_HOME/vim/after
 set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
 set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
 
-let g:netrw_home = $XDG_DATA_HOME."/vim"
-call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
-set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p')
+let g:netrw_home = $XDG_DATA_HOME . '/vim'
+if isdirectory($XDG_DATA_HOME)
+    set viewdir=$XDG_DATA_HOME/vim/view
+else
+    set viewdir=$HOME/.vim/view
+endif
+call mkdir(&viewdir, 'p')
 
-set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p')
-set directory=$XDG_CACHE_HOME/vim/swap   | call mkdir(&directory, 'p')
-set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
-
-if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
+if isdirectory($XDG_CACHE_HOME)
+    set backupdir=$XDG_CACHE_HOME/vim/backup
+    set directory=$XDG_CACHE_HOME/vim/swap
+    set undodir=$XDG_CACHE_HOME/vim/undo
+    if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
+else
+    set backupdir=$HOME/.vim/backup
+    set directory=$HOME/.vim/swap
+    set undodir=$HOME/.vim/undo
+    if !has('nvim') | set viminfofile=$HOME/.vim/viminfo | endif
+endif
 
 set enc=utf-8
 set fenc=utf-8
@@ -58,12 +68,17 @@ set comments=sl:/*,mb:\ *,elx:\ */
 filetype plugin indent on
 " load file changes
 set autoread
+" how long to wait to update after finishing typing
+set updatetime=2400
 
 " mostly case-insensitive search
 set smartcase
 set ignorecase
 
-let mapleader="\<F6>"
+" use F1 as the leader
+imap <F1> <nop>
+nmap <F1> <nop>
+let mapleader="\<F1>"
 
 " tab to esc
 noremap <Tab> <Esc>
@@ -71,7 +86,8 @@ vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 " shift-tab outputs tab in insert mode
-inoremap <Leader><Tab> <Tab>
+inoremap <S-Tab> <Tab>
+inoremap <Leader><Tab> <S-Tab>
 
 " ; to :
 map ; :
@@ -97,5 +113,9 @@ set scrolloff=1
 " 16-color color scheme
 colorscheme catalina
 
-source $XDG_CONFIG_HOME/vim/plugins.vim
+if filereadable($XDG_CONFIG_HOME . '/vim/plugins.vim')
+    source $XDG_CONFIG_HOME/vim/plugins.vim
+elseif filereadable($HOME . '/.vim/plugins.vim')
+    source $HOME/.vim/plugins.vim
+endif
 

@@ -24,7 +24,7 @@ if &background ==# 'dark'
     hi Comment          ctermfg=8       cterm=italic
     hi Identifier       ctermfg=2
     hi Include          ctermfg=3
-    hi PreProc          ctermfg=8       cterm=italic
+    hi PreProc          ctermfg=6       cterm=italic
     hi SpecialComment   ctermfg=5       cterm=italic
     hi Statement        ctermfg=3       cterm=bold
     hi! link String     Constant
@@ -32,6 +32,9 @@ if &background ==# 'dark'
 
     " cmdline
     hi MoreMsg          ctermfg=8       cterm=bold
+
+    " menus
+    hi Menu             ctermfg=15      ctermbg=8
 else
     hi Bright   ctermfg=0
     hi Normal   ctermfg=8
@@ -54,6 +57,9 @@ else
 
     " cmdline
     hi MoreMsg          ctermfg=4       cterm=bold
+
+    " menus
+    hi Menu             ctermfg=7       ctermbg=4
 endif
 
 " gutter
@@ -130,7 +136,6 @@ hi Underlined   ctermfg=13      cterm=underline
 hi! link        EndOfBuffer     Faint
 
 " menus
-hi Menu                 ctermfg=4       ctermbg=none    cterm=reverse
 " line used for closed folds
 hi Folded               ctermfg=none    ctermbg=8
 " popup menu
