@@ -38,12 +38,12 @@ if &background ==# 'dark'
 else
     hi Bright   ctermfg=0
     hi Normal   ctermfg=8
-    hi Faint    ctermfg=8
+    hi Faint    ctermfg=7
 
     " gutter
     hi! link LineNr         Normal
     hi! link CursorLineNr   Bright
-    hi ColorColumn          ctermfg=15      ctermbg=none    cterm=reverse
+    hi ColorColumn          ctermfg=8       ctermbg=7
 
     " syntax
     hi Comment          ctermfg=2       cterm=italic
@@ -87,13 +87,13 @@ hi Constant             ctermfg=12
 " debugging statements
 hi! link Debug          Special
 hi! link Define         PreProc
-hi! link Delimiter      Faint
+hi! link Delimiter      Normal
 hi! link Exception      Statement
 hi! link Function       Identifier
 hi! link Keyword        Statement
 hi Label                ctermfg=2
 hi! link Macro          Include
-hi! link Operator       Faint
+hi! link Operator       Normal
 hi! link PreCondit      PreProc
 hi! link Repeat         Statement
 hi Special              ctermfg=6

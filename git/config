@@ -25,10 +25,7 @@
     diffFilter = delta --color-only --features=interactive
 [delta]
     features = line-numbers
-    # syntax-theme = base16-catalina
-    syntax-theme = ansi
-    # emulate the catalina theme since current version of `delta` is
-    # incompatible with current version of `bat` theme caches
+    syntax-theme = base16-catalina
     tabs = 0
     file-style = yellow bold
     inline-hint-style = brightmagenta blink

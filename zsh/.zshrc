@@ -80,6 +80,9 @@ export SHELL_SESSION_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/sessions"
 [[ "$EUID" -gt 0 ]] && mkdir -p "$SHELL_SESSION_DIR"
 export SHELL_SESSION_FILE="$SHELL_SESSION_DIR/$TERM_SESSION_ID"
 
+# use colors in completion
+zstyle  ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
 # arrow keys to search history with prefix
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -96,6 +99,9 @@ setopt extended_glob
 setopt glob_star_short
 
 setopt interactive_comments
+
+# Use emacs keybinds despite value of $EDITOR or $VISUAL.
+bindkey -e
 
 if [[ "$EUID" -gt 0 ]] ; then
     [[ -f "$ZDOTDIR/local/plugins.zsh" ]] && source "$ZDOTDIR/local/plugins.zsh"
