@@ -4,11 +4,6 @@
 " License: MIT License
 " =============================================================================
 
-" dark mode
-" if lightline#colorscheme#background() ==# 'light'
-"     " light mode
-" endif
-
 " Define the foreground color if the color scheme doesn't define it.
 if !hlexists('Normal')
     if lightline#colorscheme#background() ==# 'light'

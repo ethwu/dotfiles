@@ -1,6 +1,9 @@
 " vimrc
 " -----
 
+" disable vi compat
+set nocompatible
+
 " VIM and NeoVim configuration.
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
@@ -38,9 +41,6 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 
-" disable vi compat
-set nocompatible
-
 " allow local vimrc
 set exrc
 " disallow :autocmd, shell, and write commands in local rc
@@ -59,6 +59,14 @@ set listchars=tab:→\ ,trail:·,nbsp:␣
 set fillchars=vert:╎,foldsep:╎,foldopen:•,foldclose:‣,eob:┊
 " show foldcolumn only if necessary
 if has('nvim') | set foldcolumn=auto | endif
+" folding determined by the syntax highlighting
+set foldmethod=syntax
+" do not fold by default
+set nofoldenable
+
+" Italic escape codes.
+set t_ZH=[3m
+set t_ZR=[23m
 
 " gutter
 set colorcolumn=81,101
@@ -108,8 +116,8 @@ noremap <Leader>; ;
 " use F7 to enter paste mode
 set pastetoggle=<F7>
 
-" " mouse compat
-" set mouse=a
+" mouse compat
+set mouse=a
 " always show at least one line above/below cursor
 set scrolloff=1
 
