@@ -10,6 +10,11 @@ case $- in
       *) return ;;
 esac
 
+# Source the default `bashrc` if it exists.
+if [ -f /etc/bashrc ] ; then
+    . /etc/bashrc
+fi
+
 # config home
 config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
 

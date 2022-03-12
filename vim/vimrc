@@ -98,12 +98,7 @@ inoremap <S-Tab> <Tab>
 
 " ; to :
 map ; :
-" ampersand in normal mode for custom macros
-noremap & :A
-vnoremap & :A
-" map &sw to sudo write
-" https://stackoverflow.com/a/7078429
-command Asw w !sudo tee > /dev/null %
+noremap <Leader>; ;
 
 " use F7 to enter paste mode
 set pastetoggle=<F7>
