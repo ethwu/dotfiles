@@ -120,8 +120,10 @@ if [[ "$EUID" -gt 0 ]] ; then
     [[ -f "$ZDOTDIR/local/plugins.zsh" ]] && source "$ZDOTDIR/local/plugins.zsh"
     export FPATH="$ZDOTDIR/autoload:$ZDOTDIR/completions:$FPATH"
 
-    # # autoload all functions in $ZDOTDIR/autoload/
-    # autoload -Uz $fpath[1]/*(.:t)
+    if [[ -d "$ZDOTDIR/autoload/" && "$(ls "$ZDOTDIR/autoload/")" ]] ; then
+        # autoload all functions in $ZDOTDIR/autoload/
+        autoload -Uz $fpath[1]/*(.:t)
+    fi
 
     autoload -Uz compinit
     compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"

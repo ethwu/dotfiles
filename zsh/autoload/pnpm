@@ -1,0 +1,5 @@
+#! zsh
+
+# Run `pnpm` if it is executable, and remove the debug file if it is generated.
+[[ -x =pnpm ]] && =pnpm $* || local ec=$? ; rm -f "$PWD/.pnpm-debug.log" ; return $ec
+
