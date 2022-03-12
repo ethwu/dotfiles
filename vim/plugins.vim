@@ -82,28 +82,16 @@ let g:lightline.inactive.left =
 let g:lightline.inactive.right =
             \ [ [ 'lineinfo' ] ]
 let g:lightline.component = {}
+let g:lightline.component.inactive = '%{winwidth(0) > 32 ? "inactive" : ""}'
 let g:lightline.component.lineinfo = ' %3l:%-2v'
+let g:lightline.component.paste = '%{&paste ? "paste" : ""}'
+let g:lightline.component.readonly = '%{&readonly ? "" : ""}'
 let g:lightline.component_function = {
-            \ 'inactive': 'LightlineInactive',
-            \ 'paste': 'LightlinePaste',
-            \ 'readonly': 'LightlineReadonly',
             \ 'gitstatus': 'LightlineGitStatus',
             \ 'gitprojstatus': 'LightlineGitProjectStatus' }
 " let g:lightline.separator = { 'left': '', 'right': '' }
 " let g:lightline.subseparator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '│', 'right': '│' }
-
-function! LightlineInactive()
-    return winwidth(0) > 32 ? 'inactive' : ''
-endfunction
-
-function! LightlinePaste()
-    return &paste ? 'paste' : ''
-endfunction
-
-function! LightlineReadonly()
-    return &readonly ? '' : ''
-endfunction
 
 " function! LightlineGitBlame()
 "     let blame = get(b:, 'coc_git_blame', '')
