@@ -5,13 +5,20 @@
 " =============================================================================
 
 " Define the foreground color if the color scheme doesn't define it.
-if !hlexists('Normal')
-    if lightline#colorscheme#background() ==# 'light'
-        hi Normal ctermfg=0
-    else
-        hi Normal ctermfg=15
+function s:fixfg()
+    if !hlexists('Normal') || split(execute('hi Normal'))[-1] ==# 'cleared'
+        if lightline#colorscheme#background() ==# 'light'
+            hi Normal ctermfg=0
+        else
+            hi Normal ctermfg=15
+        endif
     endif
-endif
+endfunction
+
+augroup lightline
+    autocmd! ColorScheme * if !has('vim_starting') || expand('<amatch>') !=# 'macvim'
+                \ | call s:fixfg() | call lightline#update() | call lightline#highlight() | endif
+augroup END
 
 let s:normal    = [ 4, 'NONE', 4, 'NONE', 'reverse' ]
 let s:insert    = [ 2, 'NONE', 2, 'NONE', 'reverse' ]
