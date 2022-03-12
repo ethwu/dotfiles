@@ -15,6 +15,7 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS:=/usr/local/share:/usr/share}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=$HOME/.local/run/user/$UID}"
 export LOCAL="$HOME/.local"
+export PATH="$LOCAL/bin:$PATH"
 
 # Path extensions and config flags.
 
@@ -40,7 +41,7 @@ export PERL_MB_OPT="--install_base \"$LOCAL\""
 export PERL_MM_OPT="INSTALL_BASE=\"$LOCAL\""
 
 # Python
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
+# export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 export PIPX_HOME="$XDG_DATA_HOME/pipx"
 # Poetry
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
@@ -69,7 +70,7 @@ export BSPM_BIN_DIR="$XDG_BIN_HOME"
 export BPSM_DATA_DIR="$XDG_DATA_HOME/blindspot"
 
 # SQLite
-export SQLITE_HISTORY="$XDG_DATA_OME/sqlite/history"
+export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite/history"
 
 # Vim
 export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
@@ -88,8 +89,8 @@ fi
 
 # Add local binaries to PATH.
 add_local_bin_to_path() {
-    export PATH="$HOME/.local/bin:$PATH"
-    for i in "$HOME/.local/bin"/* ; do
+    export PATH="$LOCAL/bin:$PATH"
+    for i in "$LOCAL/bin"/* ; do
         if [ -d "$i" ] ; then
             export PATH="$i:$PATH"
         fi

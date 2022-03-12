@@ -11,15 +11,6 @@
     "git.changeRemovedSign.hlGroup": "DiffChange",
 
     "languageserver": {
-        "latex": {
-            "command": "texlab",
-            "filetypes": [
-                "tex",
-                "bib",
-                "plaintex",
-                "context"
-            ]
-        },
         "racket": {
             "command": "racket",
             "args": [

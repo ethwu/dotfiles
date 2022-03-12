@@ -1,4 +1,7 @@
 
+" 16-color color scheme
+colorscheme catalina
+
 " indent guides
 let g:indentguides_ignorelist = [ 'text', 'help' ]
 let g:indentguides_spacechar = '┆'
@@ -15,6 +18,8 @@ highlight GitGutterChangeDelete ctermfg=6   cterm=none
 
 " texlab language server
 let g:tex_flavor = 'latex'
+" do not conceal characters
+let g:tex_conceal = ''
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -113,6 +118,13 @@ function! LightlineGitProjectStatus()
     return winwidth(0) > 120 ? get(g:, 'coc_git_status', '') : ''
 endfunction
 
-" hide `-- INSERT --`
-set noshowmode
+" User Commands
+
+" Call `just`.
+noremap <Leader>j :!just
+" Call `make`.
+noremap <Leader>m :make
+
+" Suspend the process.
+noremap <Leader><Leader> 
 

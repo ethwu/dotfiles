@@ -55,8 +55,21 @@ export PROMPT_EOL_MARK="%F{white}%B%S◊%s%b%f"
 
 # zsh options
 setopt always_to_end
+# use parameters with the abs. path to a dir as the name of that dir
 setopt auto_name_dirs
+# cd pushes the old directory onto the directory stack
 setopt auto_pushd
+# cd to a dir when its name is executed as a command
+setopt auto_cd
+# ignore multiple copies of the same directory when pushing to the dir stack
+setopt pushd_ignore_dups
+# add trailing slash to dir names resulting from filename generation
+setopt mark_dirs
+
+# display PID when suspending processes
+setopt longlistjobs
+# complete commands from inside word
+setopt completeinword
 
 setopt extended_history
 setopt hist_expire_dups_first
@@ -83,6 +96,9 @@ export SHELL_SESSION_FILE="$SHELL_SESSION_DIR/$TERM_SESSION_ID"
 # use colors in completion
 zstyle  ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# Use emacs keybinds despite value of $EDITOR or $VISUAL.
+bindkey -e
+
 # arrow keys to search history with prefix
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -100,12 +116,12 @@ setopt glob_star_short
 
 setopt interactive_comments
 
-# Use emacs keybinds despite value of $EDITOR or $VISUAL.
-bindkey -e
-
 if [[ "$EUID" -gt 0 ]] ; then
     [[ -f "$ZDOTDIR/local/plugins.zsh" ]] && source "$ZDOTDIR/local/plugins.zsh"
-    export FPATH="$ZDOTDIR/completions:$FPATH"
+    export FPATH="$ZDOTDIR/autoload:$ZDOTDIR/completions:$FPATH"
+
+    # # autoload all functions in $ZDOTDIR/autoload/
+    # autoload -Uz $fpath[1]/*(.:t)
 
     autoload -Uz compinit
     compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-$ZSH_VERSION"
@@ -117,4 +133,6 @@ if [[ "$EUID" -gt 0 ]] ; then
 fi
 
 unset p10k_available
+
+typeset -U path cdpath fpath manpath
 

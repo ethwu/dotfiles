@@ -166,7 +166,7 @@ hi TabLine                  ctermfg=4       ctermbg=none    cterm=reverse
 " no labels
 hi TabLineFill              ctermbg=4
 " active tab page label
-hi TabLineSel               ctermfg=3       ctermbg=none    cterm=bold,reverse
+hi TabLineSel               ctermfg=3       ctermbg=none    cterm=reverse
 hi ToolbarLine              ctermbg=8
 hi ToolbarButon             cterm=reverse
 " cmdline

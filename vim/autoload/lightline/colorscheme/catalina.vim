@@ -9,6 +9,15 @@
 "     " light mode
 " endif
 
+" Define the foreground color if the color scheme doesn't define it.
+if !hlexists('Normal')
+    if lightline#colorscheme#background() ==# 'light'
+        hi Normal ctermfg=0
+    else
+        hi Normal ctermfg=15
+    endif
+endif
+
 let s:normal    = [ 4, 'NONE', 4, 'NONE', 'reverse' ]
 let s:insert    = [ 2, 'NONE', 2, 'NONE', 'reverse' ]
 let s:replace   = [ 6, 'NONE', 6, 'NONE', 'reverse' ]

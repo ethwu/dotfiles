@@ -28,6 +28,9 @@ else
     set undodir=$HOME/.vim/undo
     if !has('nvim') | set viminfofile=$HOME/.vim/viminfo | endif
 endif
+call mkdir(&backupdir, 'p')
+call mkdir(&directory, 'p')
+call mkdir(&undodir, 'p')
 
 set enc=utf-8
 set fenc=utf-8
@@ -38,6 +41,8 @@ set nocompatible
 
 " allow local vimrc
 set exrc
+" disallow :autocmd, shell, and write commands in local rc
+set secure
 
 " indentation
 set autoindent
@@ -75,10 +80,12 @@ set updatetime=2400
 set smartcase
 set ignorecase
 
-" use F1 as the leader
+" Disable F1.
 imap <F1> <nop>
 nmap <F1> <nop>
-let mapleader="\<F1>"
+" use F1 as the leader
+let mapleader=' '
+noremap <Leader> <nop>
 
 " tab to esc
 noremap <Tab> <Esc>
@@ -87,7 +94,7 @@ onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 " shift-tab outputs tab in insert mode
 inoremap <S-Tab> <Tab>
-inoremap <Leader><Tab> <S-Tab>
+" inoremap <Leader><Tab> <S-Tab>
 
 " ; to :
 map ; :
@@ -101,17 +108,31 @@ command Asw w !sudo tee > /dev/null %
 " use F7 to enter paste mode
 set pastetoggle=<F7>
 
-" show the statusline
-set laststatus=2
-" completion menu
-set wildmenu
 " " mouse compat
 " set mouse=a
 " always show at least one line above/below cursor
 set scrolloff=1
 
-" 16-color color scheme
-colorscheme catalina
+" completion menu
+set wildmenu
+" show the statusline
+set laststatus=2
+" hide the mode
+set noshowmode
+
+" statusline
+set statusline=
+set statusline+=%#StatusLine#
+set statusline+=\ %f\ 
+set statusline+=%#Search#
+set statusline+=\ %{strtrans(mode())}\ 
+set statusline+=%#Normal#
+set statusline+=%(\ %r%)%(\ %h%)%(\ %w%)%(\ %m%)%=
+set statusline+=\ %y\ 
+set statusline+=%#Search#
+set statusline+=\ %3p%%\ 
+set statusline+=%#StatusLine#
+set statusline+=\ %3l:%-2v\ 
 
 if filereadable($XDG_CONFIG_HOME . '/vim/plugins.vim')
     source $XDG_CONFIG_HOME/vim/plugins.vim

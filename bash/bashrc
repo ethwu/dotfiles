@@ -10,9 +10,12 @@ case $- in
       *) return ;;
 esac
 
+# config home
+config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+
 # History
 HISTSIZE=1000
-HISTFILESIZE=0
+HISTFILESIZE=1000
 
 # Enable terminal colors.
 export CLICOLOR=1
@@ -53,10 +56,10 @@ PROMPT_DIRTRIM=2
 shopt -s checkwinsize
 # Enable colors in other utilities.
 if [[ -x /usr/bin/dircolors ]] ; then
-    if [[ -r "$XDG_CONFIG_HOME/dircolors" ]] ; then
-        eval "$(dircolors -b $XDG_CONFIG_HOME/dircolors)" || eval "$(dircolors -b)"
+    if [[ -r "$config_home/dircolors" ]] ; then
+        eval "$(dircolors -b "$config_home/dircolors")" || eval "$(dircolors -b)"
     fi
-    alias ls='ls --color=auto -c'
+    alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
@@ -84,7 +87,9 @@ fi
 shopt -s globstar
 
 # aliases
-[[ -f "$XDG_CONFIG_HOME/bash/aliases.bash" ]] && . "$XDG_CONFIG_HOME/bash/aliases.bash"
+[[ -f "$config_home/bash/aliases.bash" ]] && . "$config_home/bash/aliases.bash"
 # local configs
-[[ -f "$XDG_CONFIG_HOME/bash/local/local.bash" ]] && . "$XDG_CONFIG_HOME/bash/local/local.bash"
+[[ -f "$config_home/bash/local/local.bash" ]] && . "$config_home/bash/local/local.bash"
+
+unset config_home
 
