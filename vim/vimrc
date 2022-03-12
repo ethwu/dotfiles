@@ -9,28 +9,30 @@ set runtimepath+=$XDG_CONFIG_HOME/vim/after
 set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
 set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
 
-let g:netrw_home = $XDG_DATA_HOME . '/vim'
-if isdirectory($XDG_DATA_HOME)
-    set viewdir=$XDG_DATA_HOME/vim/view
-else
-    set viewdir=$HOME/.vim/view
-endif
-call mkdir(&viewdir, 'p')
+if !has('nvim')
+    let g:netrw_home = $XDG_DATA_HOME . '/vim'
+    if isdirectory($XDG_DATA_HOME)
+        set viewdir=$XDG_DATA_HOME/vim/view
+    else
+        set viewdir=$HOME/.vim/view
+    endif
+    call mkdir(&viewdir, 'p')
 
-if isdirectory($XDG_CACHE_HOME)
-    set backupdir=$XDG_CACHE_HOME/vim/backup
-    set directory=$XDG_CACHE_HOME/vim/swap
-    set undodir=$XDG_CACHE_HOME/vim/undo
-    if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
-else
-    set backupdir=$HOME/.vim/backup
-    set directory=$HOME/.vim/swap
-    set undodir=$HOME/.vim/undo
-    if !has('nvim') | set viminfofile=$HOME/.vim/viminfo | endif
+    if isdirectory($XDG_CACHE_HOME)
+        set backupdir=$XDG_CACHE_HOME/vim/backup
+        set directory=$XDG_CACHE_HOME/vim/swap
+        set undodir=$XDG_CACHE_HOME/vim/undo
+        set viminfofile=$XDG_CACHE_HOME/vim/viminfo
+    else
+        set backupdir=$HOME/.vim/backup
+        set directory=$HOME/.vim/swap
+        set undodir=$HOME/.vim/undo
+        set viminfofile=$HOME/.vim/viminfo
+    endif
+    call mkdir(&backupdir, 'p')
+    call mkdir(&directory, 'p')
+    call mkdir(&undodir, 'p')
 endif
-call mkdir(&backupdir, 'p')
-call mkdir(&directory, 'p')
-call mkdir(&undodir, 'p')
 
 set enc=utf-8
 set fenc=utf-8
