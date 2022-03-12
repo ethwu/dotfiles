@@ -54,6 +54,9 @@ set expandtab
 " show whitespace
 set list
 set listchars=tab:→\ ,trail:·,nbsp:␣
+set fillchars=vert:╎,foldsep:╎,foldopen:•,foldclose:‣,eob:┊
+" show foldcolumn only if necessary
+if has('nvim') | set foldcolumn=auto | endif
 
 " gutter
 set colorcolumn=81,101
