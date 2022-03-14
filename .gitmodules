@@ -17,7 +17,7 @@
 	path = vim/pack/plugins/start/vim-commentary
 	url = git@github.com:tpope/vim-commentary
 [submodule "vim/pack/plugins/start/vim-indentguides"]
-	path = vim/pack/plugins/start/vim-indentguides
+	path = vim/pack/plugins/opt/vim-indentguides
 	url = git@github.com:thaerkh/vim-indentguides.git
 [submodule "vim/pack/plugins/opt/vim-toml"]
 	path = vim/pack/plugins/opt/vim-toml
