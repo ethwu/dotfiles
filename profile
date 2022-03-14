@@ -19,9 +19,6 @@ export PATH="$LOCAL/bin:$PATH"
 
 # Path extensions and config flags.
 
-# bat
-export BAT_THEME='base16-catalina'
-
 # Java: jenv
 export JENV_ROOT="$XDG_DATA_HOME/jenv"
 
@@ -55,6 +52,9 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 # Racket
 export PLTUSERHOME="$XDG_DATA_HOME/racket"
 
+# GNU readline
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
 # Ruby: RubyGems
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
@@ -64,6 +64,8 @@ export PATH="$GEM_HOME/bin:$PATH"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export PATH="$CARGO_HOME/bin:$PATH"
+# bat
+export BAT_THEME='base16-catalina'
 # blindspot
 export BSPM_CONFIG="$XDG_CONFIG_HOME/blindspot/bspm.yaml"
 export BSPM_BIN_DIR="$XDG_BIN_HOME"
@@ -98,3 +100,4 @@ add_local_bin_to_path() {
     unset -f add_local_bin_to_path
 }
 
+# vi: ft=sh

@@ -122,8 +122,8 @@ function precmd() {
         RPROMPT+="%{$reset_color%}"
     fi
 
-if [[ "$show_vcs" ]] ; then
-    vcs_info
+    if [[ "$show_vcs" ]] ; then
+        vcs_info
         [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
     fi
 

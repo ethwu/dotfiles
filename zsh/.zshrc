@@ -98,13 +98,17 @@ zstyle  ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Use emacs keybinds despite value of $EDITOR or $VISUAL.
 bindkey -e
+# Still allow ESC to trigger vi command mode.
+bindkey '^[' vi-cmd-mode
+# Reduce timeout on prefixes from 0.4s to 0.05s.
+export KEYTIMEOUT=5
 
 # arrow keys to search history with prefix
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
+bindkey '^[[A' history-beginning-search-backward-end
+bindkey '^[[B' history-beginning-search-forward-end
 
 setopt auto_menu
 setopt auto_list

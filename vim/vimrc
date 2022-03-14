@@ -94,7 +94,7 @@ set ignorecase
 " Disable F1.
 imap <F1> <nop>
 nmap <F1> <nop>
-" use F1 as the leader
+" use space as the leader
 let mapleader=' '
 noremap <Leader> <nop>
 
@@ -114,10 +114,14 @@ noremap <Leader>; ;
 " use F7 to enter paste mode
 set pastetoggle=<F7>
 
-" mouse compat
-set mouse=a
 " always show at least one line above/below cursor
 set scrolloff=1
+" mouse compat
+set mouse=a
+" fancy cursor
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,
+            \a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,
+            \sm:block-blinkwait175-blinkoff150-blinkon175
 
 " completion menu
 set wildmenu
