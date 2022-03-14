@@ -148,3 +148,8 @@ elseif filereadable($HOME . '/.vim/plugins.vim')
     source $HOME/.vim/plugins.vim
 endif
 
+if has('nvim') && filereadable($XDG_CONFIG_HOME . '/nvim/init.vim')
+    source $XDG_CONFIG_HOME/nvim/init.vim
+endif
+
+
