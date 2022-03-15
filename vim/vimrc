@@ -102,10 +102,11 @@ noremap <Leader> <nop>
 noremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
-inoremap <Tab> <Esc>`^
-" shift-tab outputs tab in insert mode
-inoremap <S-Tab> <Tab>
 " inoremap <Leader><Tab> <S-Tab>
+" use tab in popup menus, but as esc otherwise
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Esc>`^"
+" shift-tab outputs tab in insert mode
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
 
 " ; to :
 map ; :
@@ -154,6 +155,17 @@ let g:mode_map = {
     \ 't': 'terminal',
     \ }
 
+function! FileSize() abort
+    let l:bytes = wordcount()['bytes']
+    let l:prefixes = ['B', 'KiB', 'MiB', 'GiB']
+    for l:prefix in l:prefixes
+        if l:bytes < 1024
+            return printf('%.1f %s', l:bytes, l:prefix)
+        endif
+        let l:bytes = l:bytes / 1024.0
+    endfor
+endfunction
+
 set statusline=
 set statusline+=%#StatusLine#
 set statusline+=\ %f\ 
@@ -163,7 +175,8 @@ set statusline+=%#Normal#
 set statusline+=%(\ %r%)%(\ %h%)%(\ %w%)%(\ %m%)%=
 set statusline+=\ %y\ 
 set statusline+=%#Search#
-set statusline+=\ %3p%%\ 
+" set statusline+=\ %3p%%\ 
+set statusline+=\ %{FileSize()}\ 
 set statusline+=%#StatusLine#
 set statusline+=\ %3l:%-2v\ 
 

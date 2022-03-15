@@ -38,8 +38,14 @@
 
     " Make <CR> auto-select the first completion item and notify coc.nvim to
     " format on enter, <cr> could be remapped by other vim plugin
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+    inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
                                   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+    " use <tab> for trigger completion and navigate to the next complete item
+    function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1] =~ '\s'
+    endfunction
 
     " Use `[g` and `]g` to navigate diagnostics
     " Use `:CocDiagnostics` to get all diagnostics of current buffer in location
@@ -67,18 +73,8 @@
 " lightline {{{
     let g:lightline = {}
     let g:lightline.colorscheme = 'catalina'
-    let g:lightline.mode_map = {
-                \ 'n': 'normal',
-                \ 'i': 'insert',
-                \ 'R': 'replace',
-                \ 'v': 'visual',
-                \ 'V': 'v-line',
-                \ "\<C-v>": 'v-block',
-                \ 'c': 'command',
-                \ 's': 'select',
-                \ 'S': 's-line',
-                \ "\<C-s>": 's-block',
-                \ 't': 'terminal' }
+    " g:mode_map defined in `vimrc`
+    let g:lightline.mode_map = g:mode_map
     let g:lightline.active = {}
     let g:lightline.active.left =
                 \ [ [ 'mode', 'paste' ],
@@ -86,7 +82,7 @@
                 \   [ 'filename', 'gitprojstatus', 'gitstatus' ] ]
     let g:lightline.active.right =
                 \ [ [ 'lineinfo' ],
-                \   [ 'percent' ],
+                \   [ 'filesize' ],
                 \   winwidth(0) >= 80 ?
                     \ [ 'fileformat', 'fileencoding', 'filetype' ] :
                     \ [] ]
@@ -96,13 +92,15 @@
                 \   [ 'readonly', 'modified' ],
                 \   [ 'filename' ] ]
     let g:lightline.inactive.right =
-                \ [ [ 'lineinfo' ] ]
+                \ [ [ 'lineinfo' ],
+                \   [ 'filesize' ] ]
     let g:lightline.component = {}
     let g:lightline.component.inactive = '%{winwidth(0) > 32 ? "inactive" : ""}'
     let g:lightline.component.lineinfo = ' %3l:%-2v'
     let g:lightline.component.paste = '%{&paste ? "paste" : ""}'
     let g:lightline.component.readonly = '%{&readonly ? "" : ""}'
     let g:lightline.component_function = {
+                \ 'filesize': 'FileSize',
                 \ 'gitstatus': 'LightlineGitStatus',
                 \ 'gitprojstatus': 'LightlineGitProjectStatus' }
     " let g:lightline.separator = { 'left': '', 'right': '' }
