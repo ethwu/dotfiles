@@ -1,3 +1,3 @@
 " Do not conceal anything.
-set conceallevel=0
+setlocal conceallevel=0
 

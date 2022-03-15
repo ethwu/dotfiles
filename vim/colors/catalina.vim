@@ -17,6 +17,7 @@ if &background ==# 'dark'
     hi! link LineNr         Faint
     hi! link LineNrAbove    LineNr
     hi! link LineNrBelow    LineNr
+    hi CursorLine           ctermbg=8       cterm=none
     hi! link CursorLineNr   Normal
     hi ColorColumn          ctermfg=8       ctermbg=none       cterm=reverse
 
@@ -42,6 +43,7 @@ else
 
     " gutter
     hi! link LineNr         Normal
+    hi CursorLine           ctermbg=7       cterm=none
     hi! link CursorLineNr   Bright
     hi ColorColumn          ctermfg=8       ctermbg=7
 

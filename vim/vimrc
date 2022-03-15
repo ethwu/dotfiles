@@ -116,6 +116,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 map ; :
 noremap <Leader>; ;
 
+noremap <Leader>e :Explore<CR>
+
 " use F7 to enter paste mode
 set pastetoggle=<F7>
 
@@ -178,12 +180,16 @@ set statusline+=%#Search#
 set statusline+=\ %{g:mode_map[mode()]}\ 
 set statusline+=%#Normal#
 set statusline+=%(\ %r%)%(\ %h%)%(\ %w%)%(\ %m%)%=
-set statusline+=\ %y\ %{FileSize()}\ 
+set statusline+=\ %y\ [%{FileSize()}]\ 
 set statusline+=%#Search#
 set statusline+=\ %3p%%\ 
 set statusline+=%#StatusLine#
 set statusline+=\ %3l:%-2v\ 
 
+" }}}
+
+" netrw {{{
+let g:netrw_keepdir = 0
 " }}}
 
 if filereadable($XDG_CONFIG_HOME . '/vim/plugins.vim')

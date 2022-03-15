@@ -92,7 +92,7 @@
     let g:lightline.inactive.right =
                 \ [ [ 'lineinfo' ] ]
     let g:lightline.component = {}
-    let g:lightline.component.fileinfo = '%f (%{FileSize()})'
+    let g:lightline.component.fileinfo = '%f [%{FileSize()}]'
     let g:lightline.component.inactive = '%{winwidth(0) > 32 ? "inactive" : ""}'
     let g:lightline.component.lineinfo = ' %3l:%-2v'
     let g:lightline.component.paste = '%{&paste ? "paste" : ""}'
