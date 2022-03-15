@@ -36,11 +36,6 @@
         inoremap <silent><expr> <c-@> coc#refresh()
     endif
 
-    " Make <CR> auto-select the first completion item and notify coc.nvim to
-    " format on enter, <cr> could be remapped by other vim plugin
-    inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
-                                  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
     " use <tab> for trigger completion and navigate to the next complete item
     function! s:check_back_space() abort
         let col = col('.') - 1
@@ -79,10 +74,10 @@
     let g:lightline.active.left =
                 \ [ [ 'mode', 'paste' ],
                 \   [ 'readonly', 'modified' ],
-                \   [ 'filename', 'gitprojstatus', 'gitstatus' ] ]
+                \   [ 'fileinfo', 'gitstatus' ] ]
     let g:lightline.active.right =
                 \ [ [ 'lineinfo' ],
-                \   [ 'filesize' ],
+                \   [ 'percent' ],
                 \   winwidth(0) >= 80 ?
                     \ [ 'fileformat', 'fileencoding', 'filetype' ] :
                     \ [] ]
@@ -90,19 +85,17 @@
     let g:lightline.inactive.left =
                 \ [ [ 'inactive' ],
                 \   [ 'readonly', 'modified' ],
-                \   [ 'filename' ] ]
+                \   [ 'fileinfo' ] ]
     let g:lightline.inactive.right =
-                \ [ [ 'lineinfo' ],
-                \   [ 'filesize' ] ]
+                \ [ [ 'lineinfo' ] ]
     let g:lightline.component = {}
+    let g:lightline.component.fileinfo = '%f (%{FileSize()})'
     let g:lightline.component.inactive = '%{winwidth(0) > 32 ? "inactive" : ""}'
     let g:lightline.component.lineinfo = ' %3l:%-2v'
     let g:lightline.component.paste = '%{&paste ? "paste" : ""}'
     let g:lightline.component.readonly = '%{&readonly ? "" : ""}'
     let g:lightline.component_function = {
-                \ 'filesize': 'FileSize',
-                \ 'gitstatus': 'LightlineGitStatus',
-                \ 'gitprojstatus': 'LightlineGitProjectStatus' }
+                \ 'gitstatus': 'LightlineGitStatus' }
     " let g:lightline.separator = { 'left': '', 'right': '' }
     " let g:lightline.subseparator = { 'left': '', 'right': '' }
     let g:lightline.subseparator = { 'left': '│', 'right': '│' }
@@ -113,12 +106,13 @@
     " endfunction
 
     function! LightlineGitStatus()
-        return winwidth(0) > 120 ? trim(get(b:, 'coc_git_status', '')) : ''
+        if winwidth(0) > 120
+            return trim(get(g:, 'coc_git_status', '') . ' ' . trim(get(b:, 'coc_git_status', '')))
+        else
+            return ''
+        endif
     endfunction
 
-    function! LightlineGitProjectStatus()
-        return winwidth(0) > 120 ? get(g:, 'coc_git_status', '') : ''
-    endfunction
 " }}}
 
 " user commands {{{

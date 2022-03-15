@@ -102,11 +102,15 @@ noremap <Leader> <nop>
 noremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
-" inoremap <Leader><Tab> <S-Tab>
-" use tab in popup menus, but as esc otherwise
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Esc>`^"
-" shift-tab outputs tab in insert mode
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<Tab>"
+inoremap <Tab> <Esc>`^
+inoremap <S-Tab> <Tab>
+
+" use backslash to select in popup menus
+inoremap <silent><expr> \ pumvisible() ? "\<C-n>" : '\'
+inoremap <silent><expr> \| pumvisible() ? "\<C-p>" : "\|"
+
+" enter to confirm in popup menus
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " ; to :
 map ; :
@@ -160,6 +164,7 @@ function! FileSize() abort
     let l:prefixes = ['B', 'KiB', 'MiB', 'GiB']
     for l:prefix in l:prefixes
         if l:bytes < 1024
+            if l:prefix ==# 'B' | return printf('%d B', l:bytes) | endif
             return printf('%.1f %s', l:bytes, l:prefix)
         endif
         let l:bytes = l:bytes / 1024.0
@@ -173,10 +178,9 @@ set statusline+=%#Search#
 set statusline+=\ %{g:mode_map[mode()]}\ 
 set statusline+=%#Normal#
 set statusline+=%(\ %r%)%(\ %h%)%(\ %w%)%(\ %m%)%=
-set statusline+=\ %y\ 
+set statusline+=\ %y\ %{FileSize()}\ 
 set statusline+=%#Search#
-" set statusline+=\ %3p%%\ 
-set statusline+=\ %{FileSize()}\ 
+set statusline+=\ %3p%%\ 
 set statusline+=%#StatusLine#
 set statusline+=\ %3l:%-2v\ 
 
