@@ -73,6 +73,8 @@ set number
 " highlight cursor line
 set cursorline
 set cursorlineopt=number
+" display as much of a line that doesn't fit on the window as possible
+set display+=lastline,msgsep
 
 " highlighting
 syntax enable
