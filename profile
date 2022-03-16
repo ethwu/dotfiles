@@ -19,6 +19,13 @@ export PATH="$LOCAL/bin:$PATH"
 
 # Path extensions and config flags.
 
+# fzf
+export FZF_DEFAULT_OPTS="
+--ansi
+--color='fg+:italic:-1,bg+:-1,hl:5,hl+:italic:5,gutter:-1'
+--color='info:3,prompt:4,pointer:5,marker:5,query:5,disabled:5,spinner:13'
+--bind ctrl-f:page-down,ctrl-b:page-up"
+
 # Java: jenv
 export JENV_ROOT="$XDG_DATA_HOME/jenv"
 

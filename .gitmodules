@@ -22,3 +22,6 @@
 [submodule "vim/pack/plugins/opt/vim-toml"]
 	path = vim/pack/plugins/opt/vim-toml
 	url = git@github.com:cespare/vim-toml
+[submodule "ranger/plugins/ranger-zoxide"]
+	path = ranger/plugins/ranger-zoxide
+	url = git@github.com:jchook/ranger-zoxide

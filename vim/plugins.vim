@@ -55,7 +55,7 @@
     nmap <silent> gr <Plug>(coc-references)
 
     nmap <silent> gs <Plug>(coc-git-chunkinfo)
-    nmap <silent> gc <Plug>(coc-git-commit)
+    nmap <silent> gm <Plug>(coc-git-commit)
 
     " Highlight the symbol and its references when holding the cursor.
     autocmd CursorHold * silent call CocActionAsync('highlight')
