@@ -98,7 +98,7 @@ hi! link Macro          Include
 hi! link Operator       Normal
 hi! link PreCondit      PreProc
 hi! link Repeat         Statement
-hi Special              ctermfg=6
+hi Special              ctermfg=6       cterm=italic
 hi! link SpecialChar    Special
 hi! link StorageClass   Type
 hi! link Structure      Type

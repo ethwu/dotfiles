@@ -53,7 +53,7 @@ set expandtab
 
 " show whitespace
 set list
-set listchars=tab:→\ ,trail:·,nbsp:␣
+set listchars=tab:→\ ,multispace:·,trail:·,nbsp:␣,precedes:┄,extends:┄
 set fillchars=vert:╎,foldsep:╎,foldopen:•,foldclose:‣,eob:┊
 " show foldcolumn only if necessary
 if has('nvim') | set foldcolumn=auto | endif
@@ -94,8 +94,8 @@ set smartcase
 set ignorecase
 
 " Disable F1.
-imap <F1> <nop>
-nmap <F1> <nop>
+inoremap <F1> <nop>
+nnoremap <F1> <nop>
 " use space as the leader
 let mapleader=' '
 noremap <Leader> <nop>
@@ -115,7 +115,7 @@ inoremap <silent><expr> \| pumvisible() ? "\<C-p>" : "\|"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " ; to :
-map ; :
+noremap ; :
 noremap <Leader>; ;
 
 noremap <Leader>e :Explore<CR>
@@ -192,6 +192,7 @@ set statusline+=\ %3l:%-2v\
 
 " netrw {{{
 let g:netrw_keepdir = 0
+let g:netrw_bufsettings = 'noma nomod nobl nowrap ro nu rnu'
 " }}}
 
 if filereadable($XDG_CONFIG_HOME . '/vim/plugins.vim')
