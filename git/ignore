@@ -1,3 +1,6 @@
+# `dotenv` files
+.env
+.envrc
 
 attic/
 # Windows thumbnails

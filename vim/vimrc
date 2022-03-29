@@ -74,7 +74,8 @@ set number
 set cursorline
 set cursorlineopt=number
 " display as much of a line that doesn't fit on the window as possible
-set display+=lastline,msgsep
+set display+=lastline
+if has('nvim') | set display+=msgsep | endif
 
 " highlighting
 syntax enable
