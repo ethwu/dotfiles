@@ -7,8 +7,8 @@
 " indent guides {{{
     let g:indentguides_concealcursor_unaltered = 1
     let g:indentguides_ignorelist = [ 'text', 'help' ]
-    let g:indentguides_spacechar = '┆'
-    let g:indentguides_tabchar = '│'
+    let g:indentguides_spacechar = '╎'
+    let g:indentguides_tabchar = '┇'
 
     command IndentGuidesToggle packadd vim-indentguides | IndentGuidesToggle
     map <Leader><F7> :IndentGuidesToggle<CR>
