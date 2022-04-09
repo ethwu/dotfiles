@@ -11,6 +11,7 @@ Thumbs.db
 Icon
 # VS Code Files
 .vscode
+*.code-workspace
 # PNPM log
 .pnpm-debug.log
 

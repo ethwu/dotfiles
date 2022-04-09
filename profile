@@ -83,6 +83,9 @@ export EXA_COLORS='justfile=33;01;04'
 # SQLite
 export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite/history"
 
+# timewarrior
+export TIMEWARRIORDB="$XDG_DATA_HOME/timewarrior"
+
 # Vim
 export VIMINIT='source $XDG_CONFIG_HOME/vim/vimrc'
 

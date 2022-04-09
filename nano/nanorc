@@ -1,4 +1,4 @@
-include ~/.local/share/nano/*.nanorc
+include /usr/share/nano/*.nanorc
 
 # Ctrl+Right stops at word ends.
 set afterends
