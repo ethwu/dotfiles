@@ -18,7 +18,6 @@ if &background ==# 'dark'
     hi! link LineNrAbove    LineNr
     hi! link LineNrBelow    LineNr
     hi CursorLine           ctermbg=8       cterm=none
-    hi! link CursorLineNr   Normal
     hi ColorColumn          ctermfg=8       ctermbg=none       cterm=reverse
 
     " syntax
@@ -44,7 +43,6 @@ else
     " gutter
     hi! link LineNr         Normal
     hi CursorLine           ctermbg=7       cterm=none
-    hi! link CursorLineNr   Bright
     hi ColorColumn          ctermfg=8       ctermbg=7
 
     " syntax
@@ -65,12 +63,12 @@ else
 endif
 
 " gutter
-hi! link Conceal    Faint
-hi! link FoldColumn Faint
-hi! link SignColumn Faint
+hi! link Conceal        Faint
+hi! link CursorLineNr   Bright
+hi! link FoldColumn     Faint
+hi! link SignColumn     Faint
 
 " selections
-hi Cursor               ctermbg=6
 hi! link lCursor        Cursor
 hi! link CursorColumn   CursorLine
 hi MatchParen           ctermbg=6       cterm=bold
@@ -185,6 +183,16 @@ hi Directory            ctermfg=4       cterm=bold
 " title in output of `:set all`, `:autocmd`, etc
 hi Title                ctermfg=4       cterm=bold
 
+hi htmlBold                 cterm=bold
+hi htmlItalic               cterm=italic
+hi htmlUnderline            cterm=underline
+hi htmlStrike               cterm=strikethrough
+
+hi htmlBoldItalic           cterm=bold,italic
+hi htmlBoldUnderline        cterm=bold,underline
+hi htmlUnderlineItalic      cterm=underline,italic
+hi htmlBoldUnderlineItalic  cterm=bold,underline,italic
+
 if !s:italics
     hi Boolean cterm=none
     hi Comment cterm=none
@@ -192,6 +200,11 @@ if !s:italics
     hi PreProc cterm=none
     hi SpecialComment cterm=none
     hi WarningMsg cterm=none
+
+    hi htmlItalic cterm=none
+    hi htmlBoldItalic cterm=bold
+    hi htmlUnderlineItalic cterm=underline
+    hi htmlBoldUnderlineItalic cterm=bold,underline
     unlet s:italics
     finish
 endif

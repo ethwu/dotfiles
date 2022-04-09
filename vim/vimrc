@@ -53,7 +53,7 @@ set expandtab
 
 " show whitespace
 set list
-set listchars=tab:→\ ,multispace:·,trail:·,nbsp:␣,precedes:┄,extends:┄
+set listchars=tab:⇥\ ,multispace:·,trail:·,nbsp:␣,precedes:┄,extends:┄
 set fillchars=vert:╎,foldsep:╎,foldopen:•,foldclose:‣,eob:┊
 " show foldcolumn only if necessary
 if has('nvim') | set foldcolumn=auto | endif
@@ -120,6 +120,11 @@ noremap ; :
 noremap <Leader>; ;
 
 noremap <Leader>e :Explore<CR>
+
+augroup Autocommands
+    " `mkdir` path to file before writing.
+    autocmd BufWritePre * call mkdir(expand('%:p:h'), 'p')
+augroup END
 
 " use F7 to enter paste mode
 set pastetoggle=<F7>
