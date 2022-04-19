@@ -60,10 +60,11 @@ if [[ "$_prompt_show_vcs" ]] ; then
     zstyle ':vcs_info:*' enable git
 
     PROMPT+="%-10(l::
-%F{green}%m%F{yellow}:)%(1v.%F{cyan}%1v%f.)"
+)%(1v.%F{cyan}%1v%f.)"
 fi
 
 # Color prompt for vim editing modes.
+_prompt_vi_mode=
 function zle-line-init() {
     _prompt_vi_mode="%(?.%F{blue}.%F{red})"
     zle reset-prompt
@@ -138,8 +139,9 @@ function precmd() {
     fi
 
     if [[ "$_prompt_show_jobs" ]] ; then
+        local sp
         (( $add_space )) && sp=' ' || sp='' ; add_space=1
-        RPROMPT+="%1(j.$add_space%F{red}•%2(j. %j.).)"
+        RPROMPT+="%1(j.$sp%F{red}•%2(j. %j.).)"
         RPROMPT+="%{$reset_color%}"
     fi
 
@@ -148,7 +150,7 @@ function precmd() {
         [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
     fi
 
-    if [[ `print -P "$PROMPT" | wc -l` -gt 1 ]] ; then
+    if (( $(print -P "$PROMPT" 2> /dev/null | wc -l) > 1 )) ; then
         print ""
     fi
 }
@@ -161,4 +163,6 @@ export PROMPT2="%(?.%F{blue}.%F{red})┆ %F{red}%! %F{yellow}%_%(?.%F{blue}.%F{r
 export PROMPT3="%F{blue}%B?)%b%f "
 # debug prompt
 export PROMPT4="%F{green}┆ %N%f:%F{yellow}%i%f "
+# change partial line output marker
+export PROMPT_EOL_MARK="%S‡%s"
 

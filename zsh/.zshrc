@@ -19,22 +19,23 @@ if [[ -n "$ZDOTDIR" ]] ; then
     unset config_dir
 fi
 
-[[ "$EUID" -gt 0 && -f "$ZDOTDIR/local/pre.zsh" ]] && source "$ZDOTDIR/local/pre.zsh"
-
-if [[ -f "$ZDOTDIR/local/prompt.zsh" ]] ; then
-    source "$ZDOTDIR/local/prompt.zsh" --host --elapsed --vcs --jobs
+if [[ -f "$ZDOTDIR/prompt.zsh" ]] ; then
+    source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs --jobs
 fi
 
-# change partial line output marker
-export PROMPT_EOL_MARK="%S‡%s"
+[[ "$EUID" -gt 0 && -f "$ZDOTDIR/local/pre.zsh" ]] && source "$ZDOTDIR/local/pre.zsh"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-elif [[ -f "$ZDOTDIR/p10k.zsh" ]] ; then
-    source "$ZDOTDIR/p10k.zsh"
+if [[ $(whence p10k) ]] ; then
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block; everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
+
+    if [[ -f "$ZDOTDIR/p10k.zsh" ]] ; then
+        source "$ZDOTDIR/p10k.zsh"
+    fi
 fi
 
 # fix keybinds
