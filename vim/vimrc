@@ -100,6 +100,8 @@ nnoremap <F1> <nop>
 " use space as the leader
 let mapleader=' '
 noremap <Leader> <nop>
+" use backslash as the local leader
+let localleader='\'
 
 " tab to esc
 noremap <Tab> <Esc>

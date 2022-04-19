@@ -4,3 +4,6 @@ setlocal cursorlineopt=line
 setlocal number
 setlocal relativenumber
 
+map <silent> <buffer> h /\.\.<CR>:noh<CR><CR>
+map <silent> <buffer> l <CR>
+

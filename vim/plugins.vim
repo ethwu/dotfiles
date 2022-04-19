@@ -120,9 +120,9 @@
 
 " user commands {{{
     " Call `just`.
-    noremap <Leader>j :!just
+    noremap <expr> <Leader>j ":!just "
     " Call `make`.
-    noremap <Leader>m :make
+    noremap <expr> <Leader>m ":make "
 
     " Suspend the process.
     noremap <Leader><Leader> 

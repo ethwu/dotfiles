@@ -19,6 +19,16 @@ export PATH="$LOCAL/bin:$PATH"
 
 # Path extensions and config flags.
 
+# C libraries.
+export C_INCLUDE_PATH="$HOME/.local/include"        # -I
+export CPLUS_INCLUDE_PATH="$HOME/.local/include"    # -I
+export LIBRARY_PATH="$HOME/.local/lib"              # -L
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
+
+# Docker
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker/machine"
+
 # fzf
 export FZF_DEFAULT_OPTS="
 --ansi
@@ -45,7 +55,7 @@ export PERL_MB_OPT="--install_base \"$LOCAL\""
 export PERL_MM_OPT="INSTALL_BASE=\"$LOCAL\""
 
 # Python
-# export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 export PIPX_HOME="$XDG_DATA_HOME/pipx"
 # Poetry
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
@@ -57,7 +67,8 @@ export IPYTHONDIR="$XDG_DATA_HOME/jupyter"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
 # Racket
-export PLTUSERHOME="$XDG_DATA_HOME/racket"
+# export PLTCONFIGHOME="$XDG_CONFIG_HOME/racket"
+# export PLTUSERHOME="$XDG_DATA_HOME/racket"
 
 # GNU readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"

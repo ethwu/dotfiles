@@ -37,7 +37,7 @@ else
 
     # prompt
     if [[ ! "$p10k_available" ]] && [[ "$CATALINA_ENABLED" != 'false' ]] ; then
-        source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs
+        source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs --jobs
     fi
 fi
 

@@ -12,14 +12,18 @@ if ! [[ "$ZSH_EVAL_CONTEXT" =~ :file$ ]] ; then
     echo '    --host      Show the hostname in the prompt.'
     echo '    --elapsed   Show the time elapsed during commands.'
     echo '    --vcs       Show VCS information when applicable.'
+    echo '    --jobs      Show the number of background jobs.'
     exit 1
 fi
 
+setopt prompt_subst
+
 zparseopts -D -E -F \
-    -user=show_user \
-    -host=show_host \
-    -elapsed=show_elapsed \
-    -vcs=show_vcs
+    -user=_prompt_show_user \
+    -host=_prompt_show_host \
+    -elapsed=_prompt_show_elapsed \
+    -vcs=_prompt_show_vcs \
+    -jobs=_prompt_show_jobs
 
 local end_opts=$@[(i)(--|-)]
 set -- "${@[0, end_opts - 1]}" "${@[end_opts + 1, -1]}"
@@ -29,24 +33,24 @@ export RPROMPT=
 
 PROMPT="%F{red}%? %F{default}["
 
-if [[ "$show_user" ]] ; then
+if [[ "$_prompt_show_user" ]] ; then
     PROMPT+="%F{green}%n"
-    if [[ "$show_host" ]] ; then
+    if [[ "$_prompt_show_host" ]] ; then
         PROMPT+="%F{yellow}@"
     fi
 fi
 
-if [[ "$show_host" ]] ; then
+if [[ "$_prompt_show_host" ]] ; then
     PROMPT+="%F{green}%m"
 fi
 
-if [[ "$show_user" ]] || [[ "$show_host" ]] ; then
+if [[ "$_prompt_show_user" ]] || [[ "$_prompt_show_host" ]] ; then
     PROMPT+="%F{yellow}:"
 fi
 
 PROMPT+="%F{green}%-2>…>%(4~|%-1~/…%2~|%~)%>>%F{default}] "
 
-if [[ "$show_vcs" ]] ; then
+if [[ "$_prompt_show_vcs" ]] ; then
     autoload -Uz vcs_info
     zstyle ':vcs_info:*:*' formats "%b%c%u "
     zstyle ':vcs_info:*:*' actionformats "%b%c%u (%a) "
@@ -59,10 +63,22 @@ if [[ "$show_vcs" ]] ; then
 %F{green}%m%F{yellow}:)%(1v.%F{cyan}%1v%f.)"
 fi
 
-PROMPT+="%-20(l::
-)%F{red}%h %(?.%F{blue}.%F{red})%# %F{default}"
+# Color prompt for vim editing modes.
+function zle-line-init() {
+    _prompt_vi_mode="%(?.%F{blue}.%F{red})"
+    zle reset-prompt
+}
+zle -N zle-line-init
+function zle-keymap-select() {
+    _prompt_vi_mode="${${KEYMAP/vicmd/"%F{green}"}/(main|viins|emacs)/"%(?.%F{blue}.%F{red})"}"
+    zle reset-prompt
+}
+zle -N zle-keymap-select
 
-if [[ "$show_elapsed" ]] ; then
+PROMPT+="%-20(l::
+)%F{red}%h %(?..%U)\$_prompt_vi_mode%#%u %F{default}"
+
+if [[ "$_prompt_show_elapsed" ]] ; then
     function preexec() {
         timer="$SECONDS"
         cmd="$1"
@@ -72,20 +88,25 @@ fi
 function precmd() {
     psvar=()
 
-    if [[ "$show_elapsed" ]] && [[ "$cmd" ]] ; then
+    [[ $? -gt 0 ]] && was_err="$err_fmt" || was_err=
+
+    RPROMPT=
+
+    # Whether to add space before the next segment.
+    local add_space=0
+
+    if [[ "$_prompt_show_elapsed" ]] && [[ "$cmd" ]] ; then
         cmd=
 
         local now="$SECONDS"
         local elapsed=$((now - timer))
 
-        RPROMPT="%F{yellow}"
+        RPROMPT+="%F{yellow}"
         if [[ $elapsed -gt 86400 ]] ; then
             local days=$((elapsed / 86400))
             elapsed=$((elapsed % 86400))
             if [[ $days -gt 0 ]] ; then
-                if [[ "$RPROMPT" != "%F{yellow}" ]] ; then
-                    RPROMPT+=' '
-                fi
+                (( $add_space )) && RPROMPT+=' ' ; add_space=1
                 RPROMPT+="${days}d"
             fi
         fi
@@ -94,9 +115,7 @@ function precmd() {
             local hours=$((elapsed / 3600))
             elapsed=$((elapsed % 3600))
             if [[ $hours -gt 0 ]] ; then
-                if [[ "$RPROMPT" != "%F{yellow}" ]] ; then
-                    RPROMPT+=' '
-                fi
+                (( $add_space )) && RPROMPT+=' ' ; add_space=1
                 RPROMPT+="${hours}h"
             fi
         fi
@@ -105,24 +124,26 @@ function precmd() {
             local minutes=$((elapsed / 60))
             elapsed=$((elapsed % 60))
             if [[ $hours -gt 0 ]] ; then
-                if [[ "$RPROMPT" != "%F{yellow}" ]] ; then
-                    RPROMPT+=' '
-                fi
+                (( $add_space )) && RPROMPT+=' ' ; add_space=1
                 RPROMPT+="${minutes}m"
             fi
         fi
 
         if [[ $elapsed -gt 0 ]] ; then
-            if [[ "$RPROMPT" != "%F{yellow}" ]] ; then
-                RPROMPT+=' '
-            fi
+            (( $add_space )) && RPROMPT+=' ' ; add_space=1
             RPROMPT+="${elapsed}s"
         fi
 
         RPROMPT+="%{$reset_color%}"
     fi
 
-    if [[ "$show_vcs" ]] ; then
+    if [[ "$_prompt_show_jobs" ]] ; then
+        (( $add_space )) && sp=' ' || sp='' ; add_space=1
+        RPROMPT+="%1(j.$add_space%F{red}•%2(j. %j.).)"
+        RPROMPT+="%{$reset_color%}"
+    fi
+
+    if [[ "$_prompt_show_vcs" ]] ; then
         vcs_info
         [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
     fi
@@ -132,5 +153,8 @@ function precmd() {
     fi
 }
 
-unset endopts
+# Continuation Prompt
+export PROMPT2="%F{red}%h %F{blue}> %F{default}"
+export PROMPT3="%F{blue}?# %F{default}"
+export PROMPT4="%F{blue}+%N:%i> %F{default}"
 
