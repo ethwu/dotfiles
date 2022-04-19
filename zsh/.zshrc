@@ -22,33 +22,20 @@ fi
 [[ "$EUID" -gt 0 && -f "$ZDOTDIR/local/pre.zsh" ]] && source "$ZDOTDIR/local/pre.zsh"
 
 if [[ -f "$ZDOTDIR/local/prompt.zsh" ]] ; then
-    source "$ZDOTDIR/local/prompt.zsh"
-else
-    # whether p10k is available
-    local p10k_available=
-
-    # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-    # Initialization code that may require console input (password prompts, [y/n]
-    # confirmations, etc.) must go above this block; everything else may go below.
-    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
-        p10k_available=yes
-        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-    fi
-
-    # prompt
-    if [[ ! "$p10k_available" ]] && [[ "$CATALINA_ENABLED" != 'false' ]] ; then
-        source "$ZDOTDIR/prompt.zsh" --host --elapsed --vcs --jobs
-    fi
+    source "$ZDOTDIR/local/prompt.zsh" --host --elapsed --vcs --jobs
 fi
 
-# prompt continuation
-export PROMPT2="%(?.%F{blue}.%F{red})┆ %F{red}%! %F{yellow}%_%(?.%F{blue}.%F{red})%B>%b%f "
-# `select` prompt
-export PROMPT3="%F{blue}%B?)%b%f "
-# debug prompt
-export PROMPT4="%F{green}┆ %N%f:%F{yellow}%i%f "
 # change partial line output marker
-export PROMPT_EOL_MARK="%F{white}%B%S◊%s%b%f"
+export PROMPT_EOL_MARK="%S‡%s"
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] ; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+elif [[ -f "$ZDOTDIR/p10k.zsh" ]] ; then
+    source "$ZDOTDIR/p10k.zsh"
+fi
 
 # fix keybinds
 [[ -f "$ZDOTDIR/inputrc.zsh" ]] && source "$ZDOTDIR/inputrc.zsh"
@@ -137,8 +124,6 @@ if [[ "$EUID" -gt 0 ]] ; then
     # local rc
     [[ -f "$ZDOTDIR/local/local.zsh" ]] && source "$ZDOTDIR/local/local.zsh"
 fi
-
-unset p10k_available
 
 typeset -U path cdpath fpath manpath
 
