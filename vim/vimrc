@@ -81,7 +81,7 @@ if has('nvim') | set display+=msgsep | endif
 syntax enable
 " highlight braces
 set showmatch
-set comments=sl:/*,mb:\ *,elx:\ */
+" set comments=sl:/*,mb:\ *,elx:\ */
 
 " detect filetype
 filetype plugin indent on
