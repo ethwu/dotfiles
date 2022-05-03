@@ -9,6 +9,10 @@
 	path = vim/pack/plugins/start/coc.nvim
 	url = git@github.com:neoclide/coc.nvim.git
 	shallow = true
+[submodule "vim/pack/plugins/start/vim-dim"]
+	path = vim/pack/plugins/start/vim-dim
+	url = git@github.com:jeffkreeftmeijer/vim-dim.git
+	shallow = true
 [submodule "vim/pack/plugins/start/vim-commentary"]
 	path = vim/pack/plugins/start/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
