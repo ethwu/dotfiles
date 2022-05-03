@@ -1,27 +1,36 @@
 [submodule "vim/pack/plugins/start/lightline.vim"]
 	path = vim/pack/plugins/start/lightline.vim
 	url = git@github.com:itchyny/lightline.vim.git
+	shallow = true
 [submodule "vim/pack/plugins/opt/just-vim"]
 	path = vim/pack/plugins/start/just-vim
 	url = git@github.com:vmchale/just-vim.git
+	shallow = true
 [submodule "vim/pack/plugins/opt/vim-pollen"]
 	path = vim/pack/plugins/start/vim-pollen
 	url = git@github.com:otherjoel/vim-pollen.git
+	shallow = true
 [submodule "vim/pack/plugins/opt/vim-racket"]
 	path = vim/pack/plugins/start/vim-racket
 	url = git@github.com:wlangstroth/vim-racket.git
+	shallow = true
 [submodule "vim/pack/plugins/opt/vim-mustache-handlebars"]
 	path = vim/pack/plugins/start/vim-mustache-handlebars
-	url = git@github.com:mustache/vim-mustache-handlebars
+	url = git@github.com:mustache/vim-mustache-handlebars.git
+	shallow = true
 [submodule "vim/pack/plugins/start/vim-commentary"]
 	path = vim/pack/plugins/start/vim-commentary
-	url = git@github.com:tpope/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git
+	shallow = true
 [submodule "vim/pack/plugins/start/vim-indentguides"]
 	path = vim/pack/plugins/opt/vim-indentguides
 	url = git@github.com:thaerkh/vim-indentguides.git
+	shallow = true
 [submodule "vim/pack/plugins/opt/vim-toml"]
 	path = vim/pack/plugins/start/vim-toml
-	url = git@github.com:cespare/vim-toml
+	url = git@github.com:cespare/vim-toml.git
+	shallow = true
 [submodule "ranger/plugins/ranger-zoxide"]
 	path = ranger/plugins/ranger-zoxide
-	url = git@github.com:jchook/ranger-zoxide
+	url = git@github.com:jchook/ranger-zoxide.git
+	shallow = true
