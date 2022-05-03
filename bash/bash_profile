@@ -6,5 +6,10 @@
 
 source "$HOME/.profile"
 
+if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/bash/local/profile.bash" ]] ; then
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/bash/local/profile.bash"
+fi
+
 add_local_bin_to_path
 
+# vim: set ft=bash:
