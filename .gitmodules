@@ -53,5 +53,9 @@
 	path = vim/pack/plugins/start/vim-toml
 	url = git@github.com:cespare/vim-toml.git
 	shallow = true
+[submodule "vim/pack/plugins/start/xonsh-vim"]
+	path = vim/pack/plugins/start/xonsh-vim
+	url = git@github.com:linkinpark342/xonsh-vim
+	shallow = true
 
 ; Automatically Added
