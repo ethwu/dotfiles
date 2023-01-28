@@ -47,6 +47,9 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/nodejs/node_repl_history"
 # NPM
 export NPM_CONFIG_PREFIX="$HOME"/.local
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+# PNPM
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+export PATH="$PNPM_HOME:$PATH" 
 
 # Perl
 export PERL5LIB="$LOCAL/lib/perl5"
