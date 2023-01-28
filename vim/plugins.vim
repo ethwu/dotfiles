@@ -118,6 +118,11 @@
 
 " }}}
 
+" ranger {{{
+    let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
+    let g:ranger_replace_netrw = 1
+" }}}
+
 " user commands {{{
     " Call `just`.
     noremap <expr> <Leader>j ":!just "

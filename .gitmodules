@@ -45,6 +45,10 @@
 	path = vim/pack/plugins/start/vim-racket
 	url = git@github.com:wlangstroth/vim-racket.git
 	shallow = true
+[submodule "vim/pack/plugins/start/ranger.vim"]
+	path = vim/pack/plugins/start/ranger.vim
+	url = git@github.com:francoiscabrol/ranger.vim
+    shallow = true
 [submodule "vim/pack/plugins/start/vim-speeddating"]
 	path = vim/pack/plugins/start/vim-speeddating
 	url = git@github.com:tpope/vim-speeddating.git
