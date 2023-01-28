@@ -218,17 +218,17 @@ builtin setopt no_aliases no_sh_glob brace_expand
   typeset -g POWERLEVEL9K_DIR_PREFIX='%f['
   typeset -g POWERLEVEL9K_DIR_SUFFIX='%f]'
   # Default current directory color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=2
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=10
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   # Replace removed segment suffixes with this symbol.
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
   # Color of the shortened directory segments.
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=10
+  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=2
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=2
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=10
   # Set to true to display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=false
   # Don't shorten directories that contain any of these files. They are anchors.
