@@ -48,8 +48,10 @@ def enablerlcompleter():
             #                        '.python_history')
 
             # Based on https://bugs.python.org/msg318437
-            history = os.path.join(os.path.expanduser(
-                os.environ.get('XDG_STATE_HOME', '~')), 'python', 'history')
+            state_home = os.path.expanduser(os.environ.get('XDG_STATE_HOME', os.path.join('~', '.local', 'state')))
+            hist_path = os.path.join(state_home, 'python')
+            os.makedirs(hist_path, exist_ok=True)
+            history = os.path.join(hist_path, 'history')
 
             try:
                 readline.read_history_file(history)
