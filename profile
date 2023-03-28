@@ -70,8 +70,8 @@ export IPYTHONDIR="$XDG_DATA_HOME/jupyter"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
 # Racket
-# export PLTCONFIGHOME="$XDG_CONFIG_HOME/racket"
-# export PLTUSERHOME="$XDG_DATA_HOME/racket"
+export PLTCONFIGHOME="$XDG_CONFIG_HOME/racket"
+export PLTUSERHOME="$XDG_DATA_HOME/racket"
 
 # GNU readline
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
