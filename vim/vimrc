@@ -123,6 +123,16 @@ noremap <Leader>; ;
 
 noremap <Leader>e :Explore<CR>
 
+" Copy to system clipboard.
+vnoremap <Leader>y "+y
+nnoremap <Leader>y "+y
+nnoremap <Leader>Y "+yg_
+" Paste to system clipboard.
+vnoremap <Leader>p "+p
+nnoremap <Leader>p "+p
+vnoremap <Leader>P "+P
+nnoremap <Leader>P "+P
+
 augroup Autocommands
     " `mkdir` path to file before writing.
     autocmd BufWritePre * call mkdir(expand('%:p:h'), 'p')
@@ -134,7 +144,8 @@ set pastetoggle=<F7>
 " always show at least one line above/below cursor
 set scrolloff=1
 " mouse compat
-set mouse=a
+set mouse=
+" set mouse=a
 " fancy cursor
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,
             \a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,
