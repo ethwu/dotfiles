@@ -64,3 +64,12 @@ def enablerlcompleter():
 
 enablerlcompleter()
 del enablerlcompleter
+
+try:
+    # Rich printing in the REPL from the `rich` package, if it is installed.
+    from rich import pretty
+    pretty.install()
+    del pretty
+except ModuleNotFoundError:
+    pass
+
