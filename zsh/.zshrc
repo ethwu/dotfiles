@@ -25,7 +25,7 @@ fi
 
 [[ "$EUID" -gt 0 && -f "$ZDOTDIR/local/pre.zsh" ]] && source "$ZDOTDIR/local/pre.zsh"
 
-if [[ $(whence p10k) ]] ; then
+if type p10k > /dev/null ; then
     # Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
     # Initialization code that may require console input (password prompts, [y/n]
     # confirmations, etc.) must go above this block; everything else may go below.
@@ -109,7 +109,7 @@ setopt glob_star_short
 setopt interactive_comments
 
 if [[ "$EUID" -gt 0 ]] ; then
-    [[ -f "$ZDOTDIR/local/plugins.zsh" ]] && source "$ZDOTDIR/local/plugins.zsh"
+    [[ -f "$ZDOTDIR/plugins.zsh" ]] && source "$ZDOTDIR/plugins.zsh"
     export FPATH="$ZDOTDIR/autoload:$ZDOTDIR/completions:$FPATH"
 
     if [[ -d "$ZDOTDIR/autoload/" && "$(ls "$ZDOTDIR/autoload/")" ]] ; then

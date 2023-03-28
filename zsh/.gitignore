@@ -8,6 +8,8 @@
 local/
 # zsh completion functions
 completions/
+# automated * env init cache
+env-setup-cache/
 
 # allow hard-linking
 zshrc
