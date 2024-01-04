@@ -1,0 +1,11 @@
+[keyboard]
+bindings = [
+    { key = "Escape", mods = "Alt", action = "ToggleViMode" },
+    { key = "Tab", mods = "Control", action = "SelectNextTab" },
+    { key = "Tab", mods = "Control | Shift", action = "SelectPreviousTab" },
+
+    # Duodecimal numeral 10.
+    { key = "2", mods = "Command", chars = "↊" },
+    # Duodecimal numeral 11.
+    { key = "3", mods = "Command", chars = "↋" },
+]
