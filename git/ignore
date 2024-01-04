@@ -15,3 +15,5 @@ Icon
 # PNPM log
 .pnpm-debug.log
 
+# Virtual environments.
+.venv/

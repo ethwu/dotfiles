@@ -103,19 +103,19 @@ noremap <Leader> <nop>
 " use backslash as the local leader
 let localleader='\'
 
-" tab to esc
-noremap <Tab> <Esc>
-vnoremap <Tab> <Esc>gV
-onoremap <Tab> <Esc>
-inoremap <Tab> <Esc>`^
-inoremap <S-Tab> <Tab>
+" " tab to esc
+" noremap <Tab> <Esc>
+" vnoremap <Tab> <Esc>gV
+" onoremap <Tab> <Esc>
+" inoremap <Tab> <Esc>`^
+" inoremap <S-Tab> <Tab>
 
-" use backslash to select in popup menus
-inoremap <silent><expr> \ pumvisible() ? "\<C-n>" : '\'
-inoremap <silent><expr> \| pumvisible() ? "\<C-p>" : "\|"
+" " use backslash to select in popup menus
+" inoremap <silent><expr> \ pumvisible() ? "\<C-n>" : '\'
+" inoremap <silent><expr> \| pumvisible() ? "\<C-p>" : "\|"
 
-" enter to confirm in popup menus
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" " enter to confirm in popup menus
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " ; to :
 noremap ; :
@@ -224,3 +224,13 @@ if has('nvim') && filereadable($XDG_CONFIG_HOME . '/nvim/init.vim')
     source $XDG_CONFIG_HOME/nvim/init.vim
 endif
 
+
+" user commands {{{
+    " Call `just`.
+    noremap <expr> <Leader>j ":!just "
+    " Call `make`.
+    noremap <expr> <Leader>m ":make "
+
+    " Suspend the process.
+    noremap <Leader><Leader> 
+" }}}

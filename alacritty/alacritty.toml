@@ -1,0 +1,17 @@
+import = [
+    "~/.config/alacritty/themes/themes/catppuccin_latte.toml"
+]
+
+[window]
+dimensions = { columns = 100, lines = 32 }
+dynamic_padding = true
+opacity = 0.8
+blur = true
+
+[font]
+normal = { family = "Iosevka Term", style = "Regular" }
+bold = { style = "Bold" }
+italic = { style = "Italic" }
+bold_italic = { style = "Bold Italic" }
+size = 18
+

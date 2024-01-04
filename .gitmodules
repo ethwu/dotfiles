@@ -1,65 +1,74 @@
+; Alacritty Themes
+[submodule "alacritty/themes"]
+	path = alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme.git
+	shallow = true
+
 ; Ranger Plugins
 [submodule "ranger/plugins/ranger-zoxide"]
 	path = ranger/plugins/ranger-zoxide
-	url = git@github.com:jchook/ranger-zoxide.git
+	url = https://github.com/jchook/ranger-zoxide.git
 	shallow = true
 
 ; Vim Plugins
 [submodule "vim/pack/plugins/start/applescript.vim"]
 	path = vim/pack/plugins/start/applescript.vim
-	url = git@github.com:vim-scripts/applescript.vim.git
+	url = https://github.com/vim-scripts/applescript.vim.git
     shallow = true
 [submodule "vim/pack/plugins/start/coc.nvim"]
 	path = vim/pack/plugins/start/coc.nvim
-	url = git@github.com:neoclide/coc.nvim.git
+	url = https://github.com/neoclide/coc.nvim.git
 	shallow = true
 [submodule "vim/pack/plugins/start/vim-dim"]
 	path = vim/pack/plugins/start/vim-dim
-	url = git@github.com:jeffkreeftmeijer/vim-dim.git
+	url = https://github.com/jeffkreeftmeijer/vim-dim.git
 	shallow = true
 [submodule "vim/pack/plugins/start/vim-commentary"]
 	path = vim/pack/plugins/start/vim-commentary
-	url = git@github.com:tpope/vim-commentary.git
+	url = https://github.com/tpope/vim-commentary.git
 	shallow = true
 [submodule "vim/pack/plugins/start/vim-indentguides"]
 	path = vim/pack/plugins/opt/vim-indentguides
-	url = git@github.com:thaerkh/vim-indentguides.git
+	url = https://github.com/thaerkh/vim-indentguides.git
 	shallow = true
 [submodule "vim/pack/plugins/opt/just-vim"]
 	path = vim/pack/plugins/start/just-vim
-	url = git@github.com:vmchale/just-vim.git
+	url = https://github.com/vmchale/just-vim.git
 	shallow = true
 [submodule "vim/pack/plugins/start/lightline.vim"]
 	path = vim/pack/plugins/start/lightline.vim
-	url = git@github.com:itchyny/lightline.vim.git
+	url = https://github.com/itchyny/lightline.vim.git
 	shallow = true
 [submodule "vim/pack/plugins/opt/vim-mustache-handlebars"]
 	path = vim/pack/plugins/start/vim-mustache-handlebars
-	url = git@github.com:mustache/vim-mustache-handlebars.git
+	url = https://github.com/mustache/vim-mustache-handlebars.git
 	shallow = true
 [submodule "vim/pack/plugins/opt/vim-pollen"]
 	path = vim/pack/plugins/start/vim-pollen
-	url = git@github.com:otherjoel/vim-pollen.git
+	url = https://github.com/otherjoel/vim-pollen.git
 	shallow = true
 [submodule "vim/pack/plugins/opt/vim-racket"]
 	path = vim/pack/plugins/start/vim-racket
-	url = git@github.com:wlangstroth/vim-racket.git
+	url = https://github.com/wlangstroth/vim-racket.git
 	shallow = true
 [submodule "vim/pack/plugins/start/ranger.vim"]
 	path = vim/pack/plugins/start/ranger.vim
-	url = git@github.com:francoiscabrol/ranger.vim
+	url = https://github.com/francoiscabrol/ranger.vim
     shallow = true
 [submodule "vim/pack/plugins/start/vim-speeddating"]
 	path = vim/pack/plugins/start/vim-speeddating
-	url = git@github.com:tpope/vim-speeddating.git
+	url = https://github.com/tpope/vim-speeddating.git
 	shallow = true
 [submodule "vim/pack/plugins/opt/vim-toml"]
 	path = vim/pack/plugins/start/vim-toml
-	url = git@github.com:cespare/vim-toml.git
+	url = https://github.com/cespare/vim-toml.git
 	shallow = true
 [submodule "vim/pack/plugins/start/xonsh-vim"]
 	path = vim/pack/plugins/start/xonsh-vim
-	url = git@github.com:linkinpark342/xonsh-vim
+	url = https://github.com/linkinpark342/xonsh-vim
 	shallow = true
 
 ; Automatically Added
+[submodule "alacritty/alacritty-theme"]
+	path = alacritty/themes
+	url = https://github.com/alacritty/alacritty-theme.git

@@ -118,13 +118,3 @@
 
 " }}}
 
-" user commands {{{
-    " Call `just`.
-    noremap <expr> <Leader>j ":!just "
-    " Call `make`.
-    noremap <expr> <Leader>m ":make "
-
-    " Suspend the process.
-    noremap <Leader><Leader> 
-" }}}
-

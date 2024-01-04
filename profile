@@ -14,8 +14,8 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:=$HOME/.local/state}"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS:=/usr/local/share:/usr/share}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=$HOME/.local/run/user/$UID}"
-export LOCAL="$HOME/.local"
-export PATH="$LOCAL/bin:$PATH"
+export PREFIX="$HOME/.local"
+export PATH="$PREFIX/bin:/opt/local/bin:$PATH"
 
 # Path extensions and config flags.
 
@@ -50,12 +50,14 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 # PNPM
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export PATH="$PNPM_HOME:$PATH" 
+# NVM
+export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}"/nvm
 
 # Perl
-export PERL5LIB="$LOCAL/lib/perl5"
-export PERL_LOCAL_LIB_ROOT="$LOCAL"
-export PERL_MB_OPT="--install_base \"$LOCAL\""
-export PERL_MM_OPT="INSTALL_BASE=\"$LOCAL\""
+export PERL5LIB="$PREFIX/lib/perl5"
+export PERL_LOCAL_LIB_ROOT="$PREFIX"
+export PERL_MB_OPT="--install_base \"$PREFIX\""
+export PERL_MM_OPT="INSTALL_BASE=\"$PREFIX\""
 
 # Python
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
@@ -117,8 +119,8 @@ fi
 
 # Add local binaries to PATH.
 add_local_bin_to_path() {
-    export PATH="$LOCAL/bin:$PATH"
-    for i in "$LOCAL/bin"/* ; do
+    export PATH="$PREFIX/bin:$PATH"
+    for i in "$PREFIX/bin"/* ; do
         if [ -d "$i" ] ; then
             export PATH="$i:$PATH"
         fi
