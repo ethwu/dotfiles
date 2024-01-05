@@ -51,7 +51,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export PATH="$PNPM_HOME:$PATH" 
 # NVM
-export NVM_DIR="${XDG_CONFIG_HOME:-$HOME}"/nvm
+export NVM_DIR="${XDG_DATA_HOME:-$HOME}"/nvm
 
 # Perl
 export PERL5LIB="$PREFIX/lib/perl5"
