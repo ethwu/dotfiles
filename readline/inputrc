@@ -12,8 +12,8 @@ set skip-completed-text
 set show-mode-in-prompt on
 # Blinking block cursor for command mode.
 set vi-cmd-mode-string "\1\e[1 q\2"
-# Blinking pipe cursor for insert mode.
-set vi-ins-mode-string "\1\e[5 q\2"
+# Blinking underline cursor for insert mode.
+set vi-ins-mode-string "\1\e[3 q\2"
 
 # https://unix.stackexchange.com/a/409866
 set editing-mode vi
