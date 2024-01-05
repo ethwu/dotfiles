@@ -127,4 +127,3 @@ if [[ "$EUID" -gt 0 ]] ; then
 fi
 
 typeset -U path cdpath fpath manpath
-

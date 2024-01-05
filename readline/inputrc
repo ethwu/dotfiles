@@ -1,3 +1,5 @@
+# Pass single escape through (don't treat as meta).
+set keyseq-timeout 0
 # Color shared prefixes when listing completions.
 set colored-completion-prefix
 # Indicate file type with color.
