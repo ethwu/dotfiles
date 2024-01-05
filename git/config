@@ -16,7 +16,12 @@
     required = true
     clean = git-lfs clean -- %f
 
+[diff]
+    colorMoved = default
+[merge]
+    conflictstyle = diff3
 [pager]
+    blame = delta
     diff = delta
     log = delta
     reflog = delta
@@ -24,23 +29,38 @@
 [interactive]
     diffFilter = delta --color-only --features=interactive
 [delta]
-    features = line-numbers
     syntax-theme = base16-catalina
+    navigate = true
+    line-numbers = true
     tabs = 0
+
     file-style = yellow bold
+    file-decoration-style = ''
     inline-hint-style = brightmagenta blink
-    hunk-header-decoration-style = brightblue box
-    hunk-header-line-number-style = yellow
+    ; commit-decoration-style = box
+    hunk-header-style = file line-number
+    hunk-header-decoration-style = blue ; ul
+    hunk-header-file-style = blue bold italic
+    hunk-header-line-number-style = yellow bold
+
     zero-style = syntax dim
     plus-style = green ul
     plus-non-emph-style = syntax dim
-    plus-emph-style = green ul
+    plus-emph-style = plus-style
     minus-style = red ul
-    minus-non-emph-style = syntax dim
-    minus-emph-style = red ul
-    line-numbers-plus-style = green
-    line-numbers-minus-style = red
+    minus-non-emph-style = plus-non-emph-style
+    minus-emph-style = minus-style
+
+    line-numbers-plus-style = green bold
+    line-numbers-minus-style = red bold
+
     whitespace-error-style = ul
 
+    # Styles for moved lines.
+    map-styles = bold magenta => yellow ul, bold cyan => blue ul
+
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
