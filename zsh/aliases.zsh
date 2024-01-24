@@ -9,8 +9,9 @@ if command -v eza &> /dev/null ; then
     alias eza='eza -Fb'
     alias ls='eza --group-directories-first'
     alias la='ls -a'
-    alias ll='ls -lah --git'
-    alias lg='ls -laGh --git'
+    alias ll='ls -lah --git --git-repos'
+    alias lg='ls -laGh --git --git-repos'
+    alias lS='ls -lah --git --git-repos --total-size'
     alias tree='eza --tree'
     alias desc='ls -dlbghH@ --git'
 fi
