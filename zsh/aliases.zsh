@@ -4,14 +4,14 @@ alias ls='ls -GFh'
 alias la='ls -a'
 alias ll='ls -al'
 
-# exa
-if command -v exa &> /dev/null ; then
-    alias exa='exa -Fb'
-    alias ls='exa --group-directories-first'
+# eza
+if command -v eza &> /dev/null ; then
+    alias eza='eza -Fb'
+    alias ls='eza --group-directories-first'
     alias la='ls -a'
     alias ll='ls -lah --git'
     alias lg='ls -laGh --git'
-    alias tree='exa --tree'
+    alias tree='eza --tree'
     alias desc='ls -dlbghH@ --git'
 fi
 
