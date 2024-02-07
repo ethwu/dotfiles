@@ -231,6 +231,8 @@ endif
     noremap <expr> <Leader>j ":!just "
     " Call `make`.
     noremap <expr> <Leader>m ":make "
+    noremap <expr> <Leader>h ":noh\n"
+    noremap <expr> <Leader>n ":set number!\n:set signcolumn=" .. (&signcolumn == "yes" ? "no" : "yes") .. "\n"
 
     " Suspend the process.
     noremap <Leader><Leader> 

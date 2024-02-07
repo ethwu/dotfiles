@@ -6,11 +6,10 @@ alias ll='ls -al'
 
 # eza
 if command -v eza &> /dev/null ; then
-    alias eza='eza -Fb'
-    alias ls='eza --group-directories-first'
+    alias ls='eza -bF --group-directories-first --colour-scale=all --smart-group'
     alias la='ls -a'
     alias ll='ls -lah --git --git-repos'
-    alias lg='ls -laGh --git --git-repos'
+    alias lg='ls -laGh --git --git-repos --no-time'
     alias lS='ls -lah --git --git-repos --total-size'
     alias tree='eza --tree'
     alias desc='ls -dlbghH@ --git'
