@@ -147,8 +147,9 @@ set scrolloff=1
 set mouse=
 " set mouse=a
 " fancy cursor
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,
+set guicursor=n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,
             \a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,
+            \n-c:blinkon0,
             \sm:block-blinkwait175-blinkoff150-blinkon175
 
 " completion menu

@@ -12,10 +12,10 @@ set skip-completed-text
 # Use emacs keybindings in vim insert mode.
 
 set show-mode-in-prompt on
-# Blinking block cursor for command mode.
-set vi-cmd-mode-string "\1\e[1 q\2"
-# Blinking underline cursor for insert mode.
-set vi-ins-mode-string "\1\e[3 q\2"
+# Solid block cursor for command mode.
+set vi-cmd-mode-string "\1\e[2 q\2"
+# Blinking block cursor for insert mode.
+set vi-ins-mode-string "\1\e[1 q\2"
 
 # https://unix.stackexchange.com/a/409866
 set editing-mode vi
