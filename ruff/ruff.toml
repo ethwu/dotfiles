@@ -1,0 +1,61 @@
+# Enumerate fixed lint violations.
+show-fixes = true
+# Source directories (to resolve first- vs. third-party imports).
+src = ['ibmlh']
+# Target Python version.
+target-version = 'py39'
+
+[format]
+# Format code in docstrings.
+docstring-code-format = true
+# Quote style to prefer.
+quote-style = 'double'
+
+[lint]
+# Linting rules to enable.
+select = ['ALL']
+# Disable reporting error codes.
+ignore = [
+    ## flake8-annotations ##
+    'ANN002',   # missing-type-args
+    'ANN003',   # missing-type-kwargs
+    'ANN101',   # missing-type-self
+
+    ## flake8-bandit
+    'S603', # subprocess-without-shell-equals-true
+
+    ## pyupgrade ##
+    'UP032',    # f-string
+]
+
+## preview rules ##
+
+# Whether to enable rules in preview.
+preview = true
+# Whether to require preview rules to be enabled by their codes.
+explicit-preview-rules = true
+# Additional rules to enable.
+extend-select = [
+    ## flake8-copyright ##
+
+    # Copyright notice checking.
+    'CPY001',
+]
+
+# Mappings from file patterns to rule codes to ignore.
+[lint.per-file-ignores]
+
+[lint.flake8-copyright]
+# Copyright owner enforcement.
+author = 'IBM Corp'
+# Copyright notice regex.
+notice-rgx = '(?i)((?:\(C\)|©)\s+)?Copyright\s+'
+
+[lint.flake8-quotes]
+# Preferred inline quote type.
+inline-quotes = 'double'
+
+[lint.pydocstyle]
+# Which docstring convention to adhere to.
+convention = 'numpy'
+
